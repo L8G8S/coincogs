@@ -1,2 +1,2 @@
 # coincogs
-App to manage collection of coins
+WebApp / Cordova playground

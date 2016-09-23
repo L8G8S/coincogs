@@ -1,0 +1,160 @@
+@import "media";
+
+.editable-list {
+    box-sizing: border-box;
+    display: block;
+    margin: auto;
+    width: 90%;
+    
+    * {
+        box-sizing: border-box;
+    }
+
+    > * {
+        vertical-align: top;
+    }
+    
+    > .title {
+        display: block;
+        padding: 6px;
+        text-align: center;
+        
+        min-width: 100px;
+    }
+
+    > .list {
+        position: relative; 
+        display: block;
+    
+        border: 1px solid #d0d0d0;
+        
+        overflow: hidden;
+        
+        .content {
+            display: inline-block;
+            min-height: 60px;
+            max-height: 120px;
+            
+            overflow: auto;    
+            overflow-x: hidden;
+
+            width: 100%;
+        }
+        
+        .item {
+            position: relative;
+            padding: 6px;
+            
+            cursor: default;
+            outline: none;
+            
+            input[type="text"] {
+                outline: none;
+                padding: 3px;
+                margin: 0;
+                margin-left: -3px;
+
+                width: 94%;
+                
+                font-family: inherit;
+                font-size: inherit;
+                color: inherit;
+                border: 1px solid #c0c0c0;
+            }
+            
+            &:hover, &.focused, &:focus {
+                background-color: #fff2e6;    
+            }
+            
+            &.blank {
+                color: #333;
+                background-color: #e6f3ff;
+                
+                padding-bottom: 3px;
+                padding-top: 3px;
+
+                .button {
+                    top: 3px;
+                }
+            }
+
+            &:not(.blank) {
+                input[type="text"] {
+                    border: 1px solid transparent;
+                    background-color: transparent;
+                    cursor: default;
+
+                    &:focus {
+                        border-color: #c0c0c0;
+                        background-color: #ffffff;
+                        cursor: text;
+                    }
+                }
+            }
+
+            &.dirty input[type="text"] {
+                border: 1px dashed #ff0000;
+
+                &:focus {
+                    border-color: #ff0000;
+                }
+            }
+            
+            .button {
+                display: block;           
+                width: 24px;
+                height: 24px;
+                
+                position: absolute;
+                top: 5px;
+                right: 2px;
+                
+                cursor: pointer;
+                            
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                
+                opacity: 0.5;
+                
+                &:hover {
+                    opacity: 1;
+                }
+                
+                &.add {
+                    background-image: url("../images/list-add.png");
+                }
+                
+                &.remove {
+                    background-image: url("../images/list-remove.png");
+                }
+            }
+        }    
+    }
+}
+
+@media @tablet, @desktop {
+    .editable-list {
+        display: inline-block;
+        margin: 4px;
+        width: auto;
+
+        > .title {
+            display: inline-block;
+            text-align: left;
+        }
+
+        > .list {
+            display: inline-block;
+            
+            .item {
+                min-width: 200px;
+                width: auto;
+                
+                input[type="text"] {
+                    width: auto;
+                }
+            }
+        }
+    }
+}

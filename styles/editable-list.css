@@ -1,0 +1,124 @@
+.editable-list {
+  box-sizing: border-box;
+  display: block;
+  margin: auto;
+  width: 90%;
+}
+.editable-list * {
+  box-sizing: border-box;
+}
+.editable-list > * {
+  vertical-align: top;
+}
+.editable-list > .title {
+  display: block;
+  padding: 6px;
+  text-align: center;
+  min-width: 100px;
+}
+.editable-list > .list {
+  position: relative;
+  display: block;
+  border: 1px solid #d0d0d0;
+  overflow: hidden;
+}
+.editable-list > .list .content {
+  display: inline-block;
+  min-height: 60px;
+  max-height: 120px;
+  overflow: auto;
+  overflow-x: hidden;
+  width: 100%;
+}
+.editable-list > .list .item {
+  position: relative;
+  padding: 6px;
+  cursor: default;
+  outline: none;
+}
+.editable-list > .list .item input[type="text"] {
+  outline: none;
+  padding: 3px;
+  margin: 0;
+  margin-left: -3px;
+  width: 94%;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  border: 1px solid #c0c0c0;
+}
+.editable-list > .list .item:hover,
+.editable-list > .list .item.focused,
+.editable-list > .list .item:focus {
+  background-color: #fff2e6;
+}
+.editable-list > .list .item.blank {
+  color: #333;
+  background-color: #e6f3ff;
+  padding-bottom: 3px;
+  padding-top: 3px;
+}
+.editable-list > .list .item.blank .button {
+  top: 3px;
+}
+.editable-list > .list .item:not(.blank) input[type="text"] {
+  border: 1px solid transparent;
+  background-color: transparent;
+  cursor: default;
+}
+.editable-list > .list .item:not(.blank) input[type="text"]:focus {
+  border-color: #c0c0c0;
+  background-color: #ffffff;
+  cursor: text;
+}
+.editable-list > .list .item.dirty input[type="text"] {
+  border: 1px dashed #ff0000;
+}
+.editable-list > .list .item.dirty input[type="text"]:focus {
+  border-color: #ff0000;
+}
+.editable-list > .list .item .button {
+  display: block;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 5px;
+  right: 2px;
+  cursor: pointer;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.5;
+}
+.editable-list > .list .item .button:hover {
+  opacity: 1;
+}
+.editable-list > .list .item .button.add {
+  background-image: url("../images/list-add.png");
+}
+.editable-list > .list .item .button.remove {
+  background-image: url("../images/list-remove.png");
+}
+@media only screen and (min-width: 750px) and (max-width: 1024px), only screen and (min-width: 1025px) {
+  .editable-list {
+    display: inline-block;
+    margin: 4px;
+    width: auto;
+  }
+  .editable-list > .title {
+    display: inline-block;
+    text-align: left;
+  }
+  .editable-list > .list {
+    display: inline-block;
+  }
+  .editable-list > .list .item {
+    min-width: 200px;
+    width: auto;
+  }
+  .editable-list > .list .item input[type="text"] {
+    width: auto;
+  }
+}
+
+/*# sourceMappingURL=maps/editable-list.css.map */

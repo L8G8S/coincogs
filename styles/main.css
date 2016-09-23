@@ -1,0 +1,290 @@
+.editable-list {
+  box-sizing: border-box;
+  display: block;
+  margin: auto;
+  width: 90%;
+}
+.editable-list * {
+  box-sizing: border-box;
+}
+.editable-list > * {
+  vertical-align: top;
+}
+.editable-list > .title {
+  display: block;
+  padding: 6px;
+  text-align: center;
+  min-width: 100px;
+}
+.editable-list > .list {
+  position: relative;
+  display: block;
+  border: 1px solid #d0d0d0;
+  overflow: hidden;
+}
+.editable-list > .list .content {
+  display: inline-block;
+  min-height: 60px;
+  max-height: 120px;
+  overflow: auto;
+  overflow-x: hidden;
+  width: 100%;
+}
+.editable-list > .list .item {
+  position: relative;
+  padding: 6px;
+  cursor: default;
+  outline: none;
+}
+.editable-list > .list .item input[type="text"] {
+  outline: none;
+  padding: 3px;
+  margin: 0;
+  margin-left: -3px;
+  width: 94%;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  border: 1px solid #c0c0c0;
+}
+.editable-list > .list .item:hover,
+.editable-list > .list .item.focused,
+.editable-list > .list .item:focus {
+  background-color: #fff2e6;
+}
+.editable-list > .list .item.blank {
+  color: #333;
+  background-color: #e6f3ff;
+  padding-bottom: 3px;
+  padding-top: 3px;
+}
+.editable-list > .list .item.blank .button {
+  top: 3px;
+}
+.editable-list > .list .item:not(.blank) input[type="text"] {
+  border: 1px solid transparent;
+  background-color: transparent;
+  cursor: default;
+}
+.editable-list > .list .item:not(.blank) input[type="text"]:focus {
+  border-color: #c0c0c0;
+  background-color: #ffffff;
+  cursor: text;
+}
+.editable-list > .list .item.dirty input[type="text"] {
+  border: 1px dashed #ff0000;
+}
+.editable-list > .list .item.dirty input[type="text"]:focus {
+  border-color: #ff0000;
+}
+.editable-list > .list .item .button {
+  display: block;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 5px;
+  right: 2px;
+  cursor: pointer;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.5;
+}
+.editable-list > .list .item .button:hover {
+  opacity: 1;
+}
+.editable-list > .list .item .button.add {
+  background-image: url("../images/list-add.png");
+}
+.editable-list > .list .item .button.remove {
+  background-image: url("../images/list-remove.png");
+}
+@media only screen and (min-width: 750px) and (max-width: 1024px), only screen and (min-width: 1025px) {
+  .editable-list {
+    display: inline-block;
+    margin: 4px;
+    width: auto;
+  }
+  .editable-list > .title {
+    display: inline-block;
+    text-align: left;
+  }
+  .editable-list > .list {
+    display: inline-block;
+  }
+  .editable-list > .list .item {
+    min-width: 200px;
+    width: auto;
+  }
+  .editable-list > .list .item input[type="text"] {
+    width: auto;
+  }
+}
+.portfolio {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+  margin: auto;
+  padding: 10px;
+}
+.portfolio * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.portfolio .row .cell {
+  position: relative;
+  border: 1px solid #c0c0c0;
+  background-color: #f9f9f9;
+  width: 280px;
+  height: 280px;
+  margin: auto;
+  margin-bottom: 50px;
+  overflow: hidden;
+}
+.portfolio .row .cell:first-of-type {
+  margin-top: 20px;
+}
+@media only screen and (min-width: 750px) and (max-width: 1024px), only screen and (min-width: 1025px) {
+  .portfolio {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+    padding: 10px;
+    width: auto;
+    border: 1px solid #e0e0e0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+  }
+  .portfolio.three-cell {
+    max-width: 490px;
+  }
+  .portfolio.four-cell {
+    max-width: 654px;
+  }
+  .portfolio.five-cell {
+    max-width: 814px;
+  }
+  .portfolio.six-cell {
+    max-width: 982px;
+  }
+  .portfolio .row {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex: 1;
+    margin-top: 10px;
+  }
+  .portfolio .row:first-child {
+    margin-top: 0;
+  }
+  .portfolio .row .cell {
+    align-items: center;
+    justify-content: center;
+    min-width: 150px;
+    min-height: 150px;
+    max-width: 150px;
+    max-height: 150px;
+    margin-right: 10px;
+    margin-bottom: auto;
+  }
+  .portfolio .row .cell:last-child {
+    margin-right: 0px;
+  }
+  .portfolio .row .cell:first-of-type {
+    margin-top: auto;
+  }
+}
+.coin {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  overflow: hidden;
+}
+.coin:hover,
+.coin:focus {
+  background-color: #e6f3ff;
+}
+.coin:hover .info,
+.coin:focus .info {
+  max-height: 100px;
+  bottom: 0;
+  -webkit-transition-duration: 0.8s, 0s;
+  -moz-transition-duration: 0.8s, 0s;
+  transition-duration: 0.8s, 0s;
+}
+.coin .image {
+  display: block;
+  width: 95%;
+  height: 95%;
+  margin: 2% auto;
+  border: 1px solid transparent;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  outline: none;
+}
+.coin .image[src=''] {
+  border-color: rgba(192, 192, 192, 0.5);
+  background-color: rgba(192, 192, 192, 0.1);
+  content: url("data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=");
+}
+.coin .image:not([src='']) {
+  -webkit-box-shadow: 0 0 7px 0px #c0c0ff;
+  -moz-box-shadow: 0 0 7px 0px #c0c0c0;
+  box-shadow: 0 0 7px 0px #c0c0c0;
+}
+.coin .info {
+  display: block;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  padding: 6px;
+  /*background-color: rgba(255,255,255,0.8);*/
+  color: #666;
+  font-size: 1.3rem;
+}
+.coin .info span:last-child {
+  position: absolute;
+  right: 7px;
+}
+@media only screen and (min-width: 750px) and (max-width: 1024px), only screen and (min-width: 1025px) {
+  .coin .info {
+    display: block;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    -webkit-transition: max-height 0.2s, bottom 0.2s;
+    -moz-transition: max-height 0.2s, bottom 0.2s;
+    transition: max-height 0.2s, bottom 0.2s;
+    position: absolute;
+    bottom: -3px;
+    padding: 3px;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #333;
+    font-size: initial;
+  }
+  .coin .info span:last-child {
+    position: absolute;
+    right: 4px;
+  }
+}
+
+/*# sourceMappingURL=maps/main.css.map */

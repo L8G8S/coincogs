@@ -1,0 +1,11 @@
+{
+    "title" : "Diameter",
+    "values": [{
+                "id": 1,
+                "text": "18 mm"
+              },
+              {
+                "id": 2,
+                "text": "23 mm"
+              }]
+}

@@ -1,0 +1,27 @@
+{
+    "title" : "Face Value",
+    "values" : [{
+                    "id": 1,
+                    "text": "1 Franc"
+                },
+                {
+                    "id": 2,
+                    "text": "2 Franc"
+                },
+                {
+                    "id": 3,
+                    "text": "5 Franc"
+                },
+                {
+                    "id": 4,
+                    "text": "10 Franc"
+                },
+                {
+                    "id": 5,
+                    "text": "20 Franc"
+                },
+                {
+                    "id": 6,
+                    "text": "100 Franc"
+                }]
+}

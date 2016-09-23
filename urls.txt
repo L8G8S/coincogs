@@ -1,0 +1,6 @@
+https://developer.mozilla.org/fr/Apps/Build/Hors-ligne
+https://github.com/localForage/localForage
+http://blog.ippon.fr/2013/05/23/une-application-html5-desktop-en-mode-offline/
+
+
+https://www.iconfinder.com/icons/32123/keys_unlock_icon#size=64

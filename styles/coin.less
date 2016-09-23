@@ -1,0 +1,108 @@
+@import "media";
+
+.coin {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box; 
+    box-sizing: border-box;
+
+    position: relative;
+    top:0;
+
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    outline: none;
+    overflow: hidden;
+
+    &:hover, &:focus {
+        background-color: #e6f3ff;
+
+        .info {
+            max-height: 100px;
+            bottom: 0;
+
+            -webkit-transition-duration: 0.8s, 0s;
+            -moz-transition-duration: 0.8s, 0s;
+            transition-duration: 0.8s, 0s;
+        }
+    }
+
+    .image {
+        display: block;
+        width: 95%;
+        height: 95%;
+        margin: 2% auto;
+
+        border: 1px solid transparent;
+
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+
+        outline: none;
+
+        &[src=''] {
+            border-color: rgba(192, 192, 192, 0.5);
+            background-color: rgba(192, 192, 192, 0.1);
+            content:url("data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=");
+        }
+
+        &:not([src='']){
+            -webkit-box-shadow: 0 0 7px 0px rgba(192,192,119260,1);
+            -moz-box-shadow: 0 0 7px 0px rgba(192,192,192,1);
+            box-shadow: 0 0 7px 0px rgba(192,192,192,1);
+        }
+    }
+
+    .info {
+        display: block;
+        width: 100%;
+
+        position: absolute;
+        bottom: 0;
+        padding: 6px;
+
+        /*background-color: rgba(255,255,255,0.8);*/
+
+        color: #666;
+        font-size: 1.3rem;
+
+        span {
+            &:last-child {
+                position: absolute;
+                right: 7px;   
+            }
+        }
+    }
+}
+@media @tablet, @desktop {
+    .coin {
+        .info {
+            display: block;
+            width: 100%;
+            max-height: 0;
+            overflow: hidden;
+
+            -webkit-transition: max-height 0.2s, bottom 0.2s;
+            -moz-transition: max-height 0.2s, bottom 0.2s;
+            transition: max-height 0.2s, bottom 0.2s;
+
+            position: absolute;
+            bottom: -3px;
+            padding: 3px;   
+
+            background-color: rgba(255,255,255,0.5);
+
+            color: #333;
+            font-size: initial;
+
+            span {
+                &:last-child {
+                    position: absolute;
+                    right: 4px;   
+                }
+            }
+        }
+    }
+}

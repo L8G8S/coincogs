@@ -1,0 +1,19 @@
+{
+    "title": "Material",
+    "values": [{
+                    "id": 1,
+                    "text": "Nickel"
+                },
+                {
+                    "id": 2,
+                    "text": "Argent"
+                },
+                {
+                    "id": 3,
+                    "text": "Aluminium"
+                },
+                {
+                    "id": 4,
+                    "text": "Bronze Aluminium"
+                }]
+}

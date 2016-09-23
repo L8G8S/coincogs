@@ -1,0 +1,31 @@
+{
+    "title": "Thickness",
+    "values" : [{
+                    "id": 1,
+                    "text": "1,40 mm"
+                },
+                {
+                    "id": 2,
+                    "text": "1,41 mm"
+                },
+                {
+                    "id": 3,
+                    "text": "1,45 mm"
+                },
+                {
+                    "id": 4,
+                    "text": "1,48 mm"
+                },
+                {
+                    "id": 5,
+                    "text": "1,60 mm"
+                },
+                {
+                    "id": 6,
+                    "text": "1,70 mm"
+                },
+                {
+                    "id": 6,
+                    "text": "1,85 mm"
+                }]
+}

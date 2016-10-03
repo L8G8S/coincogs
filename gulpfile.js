@@ -23,6 +23,14 @@ gulp.task('less-reload', function () {
     seq('less')(reload);
 });
 
+gulp.task('js-reload', function () {
+    reload();
+});
+
+gulp.task('html-reload', function () {
+    reload();
+});
+
 gulp.task('build', function(callback) {
     seq('less')(callback);
 });
@@ -65,6 +73,8 @@ gulp.task('proxy', function () {
 gulp.task('watch', function () {
     // watch for changes in *.less file(s)
     gulp.watch('./styles/*.less', ['less-reload']);
+    gulp.watch('./scripts/*.js', ['js-reload']);
+    gulp.watch('./*.html', ['html-reload']);
 
     // browser sync    
     browserSync.init({

@@ -1,4 +1,4 @@
-// Used to check if there is a new version of the app
+// used to check if there is a new version of the app
 window.addEventListener('load', function(e) {
     if(!window.applicationCache) return;
 

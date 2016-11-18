@@ -10,10 +10,10 @@ var browserSync = require('browser-sync').create();
 var reload = browserSync.reload;
 
 gulp.task('less', function() {
-    gulp.src('./styles/*.less')
+    gulp.src('./styles/main.less')
         .pipe(sourcemaps.init())
         .pipe(less())
-        .pipe(sourcemaps.write('./maps'))
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(function(f) {
             return f.base;
         }))

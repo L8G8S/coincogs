@@ -6,43 +6,43 @@
     <link rel="stylesheet" href="styles/main.css" />
     <link rel="import" id="editable-list-template" href="templates/editable-list.html">
 
-    <script src="scripts/ajax.es6.js"></script>
-    <script src="scripts/editable-list.es6.js"></script>
+    <script src="scripts/utils/ajax.es6.js"></script>
+    <script src="scripts/components/editable-list.es6.js"></script>
     <script src="scripts/referential.es6.js"></script>
 </head>
 <body>
     <div id="faceValuePane" class="editable-list"
          data-type="facevalue" 
-         data-source="data/facevalue.json" 
+         data-source="data/referential/facevalue.json" 
          data-save="http://localhost:8080/referential/save.svc">
     </div>
     
     <div id="thicknessPane" class="editable-list"
          data-type="thickness" 
-         data-source="data/thickness.json"
+         data-source="data/referential/thickness.json"
          data-save="http://localhost:8080/referential/save.svc">
     </div>
     
     <div id="weightPane" class="editable-list" 
          data-type="weight" 
-         data-source="data/weight.json"
+         data-source="data/referential/weight.json"
          data-save="http://localhost:8080/referential/save.svc">
     </div>
     
     <div id="materialPane" class="editable-list"
          data-type="material" 
-         data-source="data/material.json" 
+         data-source="data/referential/material.json" 
          data-save="http://localhost:8080/referential/save.svc">
     </div>
     
     <div id="countryPane" class="editable-list"
          data-type="country" 
-         data-source="data/country.json">
+         data-source="data/referential/country.json">
     </div>
     
     <div id="diameterPane" class="editable-list"
          data-type="diameter" 
-         data-source="data/diameter.json"
+         data-source="data/referential/diameter.json"
          data-save="http://localhost:8080/referential/save.svc">
     </div>
     

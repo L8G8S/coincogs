@@ -1,0 +1,111 @@
+@import "media";
+@import "theme";
+
+.search-filter-container {
+    cursor: default;
+
+    figure {
+        margin: 0;
+        margin-bottom: 3rem;
+
+        figcaption {
+            margin-bottom: 1.5rem;
+            
+            font-weight: bold;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            font-size: 1.6rem;
+
+            li {
+                a {
+                    display: block;
+                    position: relative;
+                    
+                    cursor: pointer;
+
+                    text-decoration: none;
+                    font-family: inherit;
+                    font-size: inherit;
+
+                    margin-bottom: 0.8rem;
+
+                    > * {
+                        vertical-align: middle;
+                    }
+
+                    span {
+                        &.title {
+                            color: @link-text-color;
+                        }
+
+                        &.count {
+                            position: absolute;
+                            right: 0;
+
+                            padding-top: 0.2rem;
+                            padding-bottom: 0.2rem;
+                            padding-left: 0.5rem;
+                            padding-right: 0.5rem;
+
+                            color: @additional-info-color;
+                            background-color: @additional-info-background;
+
+                            border-radius: 4px 0 0 4px;
+                        }
+
+                        &.more {
+                            display: block;
+
+                            background-color: #f0f0f0;
+                            padding: 0.5rem;
+
+                            border-radius: 4px;
+
+                            text-align: center;
+                            color: @additional-info-color;
+                        }
+                    }
+
+                    &:hover {
+                        span {
+                            &.title {
+                                border-bottom: 1px solid @link-text-color;
+                            }
+
+                            &.more {
+                                color: initial;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.search-result-container {
+    
+}
+
+.page-content {
+    > * {
+        vertical-align: top;
+    }
+
+    .search-filter-container, .search-result-container {
+        display: inline-block;
+    }
+
+    .search-filter-container {
+        width: 20%;
+    }
+
+    .search-result-container {
+        flex-grow: 1;
+    }
+}

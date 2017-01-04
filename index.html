@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="styles/index.css" />
+</head>
+
+<body>
+<header class="page-header"></header>
+
+<div class="page-content">
+<div class="search-filter-container">
+    <figure>
+        <figcaption>Categories</figcaption>
+        <ul>
+            <li><a><span class="title">Modernes</span><span class="count">55 457</span></a></li>
+            <li><a><span class="title">Féodales</span><span class="count">15 457</span></a></li>
+            <li><a><span class="title">Royales</span><span class="count">3 602</span></a></li>
+            <li><a><span class="more">+ More Filters</span></a></li>
+        </ul>
+    </figure>
+    <figure>
+        <figcaption>Metal</figcaption>
+        <ul>
+            <li><a><span class="title">Or</span></a></li>
+            <li><a><span class="title">Argent</span></a></li>
+            <li><a><span class="title">Aluminium</span></a></li>
+            <li><a><span class="title">Bronze-Aluminium</span></a></li>
+            <li><a><span class="title">Cupro-Nickel</span></a></li>
+            <li><a><span class="title">Duralium</span></a></li>
+            <li><a><span class="more">+ More Filters</span></a></li>
+        </ul>
+    </figure>
+    <figure>
+        <figcaption>Mint Town</figcaption>
+        <ul>
+            <li><a><span class="title">Paris</span></a></li>
+            <li><a><span class="title">Beaumont-Le-Roger</span></a></li>
+            <li><a><span class="title">Bordeaux</span></a></li>
+            <li><a><span class="title">Castelsarasin</span></a></li>
+            <li><a><span class="more">+ More Filters</span></a></li>
+        </ul>
+    </figure>
+</div>
+<div class="search-result-container">
+<div class="item-picture">
+    <button id="prev"><span>&lt;</span></button>
+    <div class="image-container">
+        <img src="./images/semeuse.png" />
+        <img src="./images/semeuse.png" />
+        <img src="./images/semeuse.png" />
+        <img src="./images/semeuse.png" />
+        <img src="./images/semeuse.png" />
+        <img src="./images/semeuse.png" />
+        <img src="./images/semeuse.png" />
+        <img src="./images/semeuse.png" />
+        <img src="./images/semeuse.png" />
+    </div>
+    <button id="next"><span>&gt;</span></button>
+</div>
+
+<script type="text/javascript">
+    function swipeNext() {
+        var pict = document.querySelector('.item-picture .image-container');
+        var firstImage = pict.querySelector('img:first-child');
+
+        pict.appendChild(firstImage);
+    }
+
+    function swipePrevious() {
+        var pict = document.querySelector('.item-picture .image-container');
+        var firstImage = pict.querySelector('img:first-child');
+        var lastImage = pict.querySelector('img:last-child');
+
+        pict.insertBefore(lastImage, firstImage);
+    }
+
+    document.querySelector('#next').addEventListener('click', swipeNext);
+    document.querySelector('#prev').addEventListener('click', swipePrevious);
+
+</script>
+</div>
+</div>
+
+<footer class="page-footer"></footer>
+
+</body>
+</html>

@@ -4,3 +4,7 @@ http://blog.ippon.fr/2013/05/23/une-application-html5-desktop-en-mode-offline/
 
 
 https://www.iconfinder.com/icons/32123/keys_unlock_icon#size=64
+
+http://www.alsacreations.com/article/lire/1418-css3-transformations-2d.html
+http://www.w3schools.com/cssref/tryit.asp?filename=trycss3_perspective1
+http://www.the-art-of-web.com/css/css-animation/

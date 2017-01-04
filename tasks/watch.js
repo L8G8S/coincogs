@@ -24,6 +24,7 @@ gulp.task('html-reload', function () {
 gulp.task('watch', function () {
     gulp.watch('./styles/*.less', ['less-reload']);
     gulp.watch('./scripts/*.js', ['js-reload']);
+    gulp.watch('./views/partials/*.html', ['view-reload']);
     gulp.watch('./views/*.html', ['view-reload']);
     gulp.watch('./*.html', ['html-reload']);
 
@@ -31,7 +32,7 @@ gulp.task('watch', function () {
     browserSync.init({
         server: {
             baseDir: '.',
-            index: 'main.html'
+            index: 'index.html'
         },
         port: 4000,
         ui: {

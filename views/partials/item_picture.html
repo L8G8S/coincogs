@@ -1,0 +1,36 @@
+<div class="item-picture">
+    <button id="prev"><span>&lt;</span></button>
+    <div class="image-container">
+        <img src="./images/semeuse.png" />
+        <img src="./images/semeuse.png" />
+        <img src="./images/semeuse.png" />
+        <img src="./images/semeuse.png" />
+        <img src="./images/semeuse.png" />
+        <img src="./images/semeuse.png" />
+        <img src="./images/semeuse.png" />
+        <img src="./images/semeuse.png" />
+        <img src="./images/semeuse.png" />
+    </div>
+    <button id="next"><span>&gt;</span></button>
+</div>
+
+<script type="text/javascript">
+    function swipeNext() {
+        var pict = document.querySelector('.item-picture .image-container');
+        var firstImage = pict.querySelector('img:first-child');
+
+        pict.appendChild(firstImage);
+    }
+
+    function swipePrevious() {
+        var pict = document.querySelector('.item-picture .image-container');
+        var firstImage = pict.querySelector('img:first-child');
+        var lastImage = pict.querySelector('img:last-child');
+
+        pict.insertBefore(lastImage, firstImage);
+    }
+
+    document.querySelector('#next').addEventListener('click', swipeNext);
+    document.querySelector('#prev').addEventListener('click', swipePrevious);
+
+</script>

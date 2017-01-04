@@ -1,0 +1,134 @@
+@import "media";
+@import "theme";
+
+/*.item {*/
+    .item-picture {
+        position: relative;
+        display: block;
+
+        width: 57rem;
+        margin: auto;
+
+        > * {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .image-container {
+            -webkit-perspective: 15rem;
+            perspective: 15rem;
+
+            width: 50rem;
+            height: 20rem;
+
+            img {
+                position: absolute;
+                display: inline;
+                height: 100%;
+
+                border: 1px solid #d0d0d0;
+
+                -webkit-transition: 0.5s ease-in-out;
+                -moz-transition: 0.5s ease-in-out;
+                -o-transition: 0.5s ease-in-out;
+                transition: 0.5s ease-in-out;
+
+                &:nth-of-type(1){
+                    left: -9rem;
+                    -webkit-transform: rotateY(140deg) scaleX(0.6) scaleY(0.78);
+                    transform: rotateY(140deg) scaleX(0.6) scaleY(0.78);
+                    opacity: 0;
+                    z-index: 1;
+                }
+
+                &:nth-of-type(2){
+                    left: -4rem;
+                    -webkit-transform: rotateY(120deg) scaleX(0.6) scaleY(0.78);
+                    transform: rotateY(120deg) scaleX(0.6) scaleY(0.78);
+                    opacity: 0.2;
+                    z-index: 2;
+                }
+                
+                &:nth-of-type(3){
+                    left: 2rem;
+                    -webkit-transform: rotateY(75deg) scaleX(0.5) scaleY(0.80);
+                    transform: rotateY(75deg) scaleX(0.5) scaleY(0.80);
+                    opacity: 0.4;
+                    z-index: 3;
+                }
+                
+                &:nth-of-type(4){
+                    left: 8rem;
+                    -webkit-transform: rotateY(30deg) scaleX(0.7) scaleY(0.85);
+                    transform: rotateY(30deg) scaleX(0.7) scaleY(0.85);
+                    opacity: 0.6;
+                    z-index: 4;
+                }
+
+                &:nth-of-type(5){
+                    left: 15rem;
+                    z-index: 5;
+                    border-color: transparent;
+                }
+
+                &:nth-of-type(6){
+                    left: 22rem;
+                    -webkit-transform: rotateY(-30deg) scaleX(0.7) scaleY(0.85);
+                    transform: rotateY(-30deg) scaleX(0.7) scaleY(0.85);
+                    opacity: 0.6;
+                    z-index: 4;
+                }
+
+                &:nth-of-type(7){
+                    left: 28rem;
+                    -webkit-transform: rotateY(-75deg) scaleX(0.5) scaleY(0.80);
+                    transform: rotateY(-75deg) scaleX(0.5) scaleY(0.80);
+                    opacity: 0.4;
+                    z-index: 3;
+                }
+
+                &:nth-of-type(8){
+                    left: 34rem;
+                    -webkit-transform: rotateY(-120deg) scaleX(0.6) scaleY(0.78);
+                    transform: rotateY(-120deg) scaleX(0.6) scaleY(0.78);
+                    opacity: 0.2;
+                    z-index: 2;
+                }
+
+                &:nth-of-type(9){
+                    left: 39rem;
+                    -webkit-transform: rotateY(-140deg) scaleX(0.6) scaleY(0.78);
+                    transform: rotateY(-140deg) scaleX(0.6) scaleY(0.78);
+                    opacity: 0;
+                    z-index: 1;
+                }
+            }
+        }
+
+        button {
+            padding: 0;
+
+            width: 3rem;
+            height: 3rem;
+
+            font-size: 2rem;
+            color: @additional-info-color;
+
+            border: 1px solid transparent;
+            background-color: @additional-info-background;
+            border-radius: 50% 50%;
+
+            cursor: pointer;
+            outline: none;
+
+            > span {
+                display: block;
+                margin-top: -0.4rem;
+            }
+
+            &:hover {
+                color: initial;
+            }
+        }
+    }
+/*}*/

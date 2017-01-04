@@ -10,7 +10,7 @@ var inject = require('gulp-inject');
 var rename = require('gulp-rename');
 
 gulp.task('less', function() {
-    gulp.src('./styles/main.less')
+    gulp.src('./styles/index.less')
         .pipe(sourcemaps.init())
         .pipe(less())
         .pipe(sourcemaps.write('.'))

@@ -208,6 +208,7 @@ body {
 .item-picture button > span {
   display: block;
   margin-top: -0.4rem;
+  /* depends on the font family */
 }
 .item-picture button:hover {
   color: initial;

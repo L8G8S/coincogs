@@ -18,18 +18,26 @@ gulp.task('proxy', function () {
         }
         
         // Set routes
-        if (request.method === 'POST' && request.url === '/referential/save.svc') {
+        if (request.method === 'POST') {
+
+            if(request.url === '/referential/save.svc'){
+                var body = [];
+                request.on('data', function(chunk) {
+                    body.push(chunk);
+                }).on('end', function() {
+                    body = Buffer.concat(body).toString();
+                    gutil.log(body);
+                });
             
-            var body = [];
-            request.on('data', function(chunk) {
-                body.push(chunk);
-            }).on('end', function() {
-                body = Buffer.concat(body).toString();
-                gutil.log(body);
-            });
-            
-            request.pipe(response);
+                request.pipe(response);
+            }
+
         } 
+        else if (request.method === 'GET') {
+            if(request.url === '/referential/search_filters.json') {
+
+            }
+        }
         else {
             response.statusCode = 404;
             response.end();

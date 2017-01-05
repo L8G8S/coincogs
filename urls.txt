@@ -10,3 +10,4 @@ http://www.w3schools.com/cssref/tryit.asp?filename=trycss3_perspective1
 http://www.the-art-of-web.com/css/css-animation/
 
 https://tinypng.com/
+https://dev.w3.org/html5/html-author/charref

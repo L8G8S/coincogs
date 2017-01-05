@@ -37,10 +37,33 @@ body {
 }
 .search-filter-container {
   cursor: default;
+  overflow: hidden;
+  overflow-y: auto;
 }
 .search-filter-container figure {
+  display: block;
   margin: 0;
   margin-bottom: 3rem;
+}
+.search-filter-container figure .hidden {
+  opacity: 0;
+  max-height: 0;
+}
+.search-filter-container figure .more {
+  display: block;
+  background-color: #f0f0f0;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 0.4rem;
+  font-size: 1.6rem;
+  text-align: center;
+  text-decoration: none;
+  color: #808080;
+  cursor: pointer;
+}
+.search-filter-container figure .more.hidden {
+  padding: 0;
+  margin: 0;
 }
 .search-filter-container figure figcaption {
   margin-bottom: 1.5rem;
@@ -51,6 +74,17 @@ body {
   padding: 0;
   list-style: none;
   font-size: 1.6rem;
+  max-height: 8.1rem;
+  overflow: hidden;
+}
+.search-filter-container figure ul li {
+  overflow: hidden;
+  max-height: 3rem;
+  /*
+                -webkit-transition: opacity 250ms linear, max-height 250ms linear;
+                -moz-transition: opacity 250ms linear, max-height 250ms linear;
+                transition: opacity 250ms linear, max-height 250ms linear;
+                */
 }
 .search-filter-container figure ul li a {
   display: block;
@@ -78,19 +112,60 @@ body {
   background-color: #f0f0f0;
   border-radius: 4px 0 0 4px;
 }
-.search-filter-container figure ul li a span.more {
-  display: block;
-  background-color: #f0f0f0;
-  padding: 0.5rem;
-  border-radius: 4px;
-  text-align: center;
-  color: #808080;
-}
 .search-filter-container figure ul li a:hover span.title {
   border-bottom: 1px solid #508ced;
 }
 .search-filter-container figure ul li a:hover span.more {
   color: initial;
+}
+.search-filter-container figure ul.six-filters {
+  max-height: 16.2rem;
+}
+.search-filter-container figure ul.all-filters {
+  max-height: none;
+}
+.search-filter-container figure.filters {
+  margin-bottom: 2rem;
+  max-height: 40rem;
+  opacity: 1;
+  -webkit-transition: opacity 150ms linear, max-height 250ms linear;
+  -moz-transition: opacity 150ms linear, max-height 250ms linear;
+  transition: opacity 150ms linear, max-height 250ms linear;
+}
+.search-filter-container figure.filters ul li {
+  max-height: none;
+}
+.search-filter-container figure.filters ul li a {
+  background-color: #508ced;
+  padding: 0.5rem 0.7rem;
+  border-radius: 0.4rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+.search-filter-container figure.filters ul li a span {
+  color: inherit;
+}
+.search-filter-container figure.filters ul li a span.title {
+  font-weight: normal;
+}
+.search-filter-container figure.filters ul li a span.cross {
+  position: absolute;
+  right: 0.7rem;
+  top: 0.5rem;
+  opacity: 0.5;
+}
+.search-filter-container figure.filters ul li a:hover {
+  /*text-shadow: 0 0 2px @theme-color01;*/
+}
+.search-filter-container figure.filters ul li a:hover span.cross {
+  opacity: 1;
+}
+.search-filter-container figure.filters.empty {
+  max-height: 0;
+  opacity: 0;
+}
+.search-filter-container figure.filters.empty figcaption {
+  display: none;
 }
 .page-content > * {
   vertical-align: top;

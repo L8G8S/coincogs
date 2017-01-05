@@ -3,10 +3,40 @@
 
 .search-filter-container {
     cursor: default;
+    overflow: hidden;
+    overflow-y: auto;
 
     figure {
+        display: block;
         margin: 0;
         margin-bottom: 3rem;
+
+        .hidden {
+            opacity: 0;
+            max-height: 0;
+        }
+
+        .more {
+            display: block;
+
+            background-color: #f0f0f0;
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+
+            border-radius: 0.4rem;
+
+            font-size: 1.6rem;
+            text-align: center;
+            text-decoration: none;
+            color: @additional-info-color;
+
+            cursor: pointer;
+
+            &.hidden {
+                padding: 0;
+                margin: 0;
+            }
+        }
 
         figcaption {
             margin-bottom: 1.5rem;
@@ -21,7 +51,13 @@
 
             font-size: 1.6rem;
 
+            max-height: 8.1rem;
+            overflow: hidden;
+
             li {
+                overflow: hidden;
+                max-height: 3rem;
+
                 a {
                     display: block;
                     position: relative;
@@ -57,18 +93,6 @@
 
                             border-radius: 4px 0 0 4px;
                         }
-
-                        &.more {
-                            display: block;
-
-                            background-color: #f0f0f0;
-                            padding: 0.5rem;
-
-                            border-radius: 4px;
-
-                            text-align: center;
-                            color: @additional-info-color;
-                        }
                     }
 
                     &:hover {
@@ -82,6 +106,79 @@
                             }
                         }
                     }
+                }
+
+                /*
+                -webkit-transition: opacity 250ms linear, max-height 250ms linear;
+                -moz-transition: opacity 250ms linear, max-height 250ms linear;
+                transition: opacity 250ms linear, max-height 250ms linear;
+                */
+            }
+
+            &.six-filters {
+                max-height: 16.2rem;
+            }
+
+            &.all-filters {
+                max-height: none;
+            }
+        }
+
+        &.filters {
+            margin-bottom: 2rem;
+            
+            max-height: 40rem;
+            opacity: 1;
+
+            -webkit-transition: opacity 150ms linear, max-height 250ms linear;
+            -moz-transition: opacity 150ms linear, max-height 250ms linear;
+            transition: opacity 150ms linear, max-height 250ms linear;
+
+            ul {
+                li {
+                    max-height: none;
+
+                    a {
+                        background-color: @link-text-color;
+                        padding: 0.5rem 0.7rem;
+                        border-radius: 0.4rem;
+                        margin-bottom: 0.5rem;
+
+                        color: @theme-color00;
+                         
+                        span {
+                            color: inherit;
+
+                            &.title{
+                                font-weight: normal;
+                            }
+
+                            &.cross {
+                                position: absolute;
+                                right: 0.7rem;
+                                top: 0.5rem;
+
+                                opacity: 0.5;
+                            }
+                        }
+
+                        &:hover {
+                            /*text-shadow: 0 0 2px @theme-color01;*/
+
+                            span.cross {
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.empty {
+                max-height: 0;
+                opacity: 0;
+
+                figcaption {
+                    display: none;
                 }
             }
         }

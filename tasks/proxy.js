@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
+var fs = require('fs');
 
 var http = require('http');
 
@@ -16,7 +17,7 @@ gulp.task('proxy', function () {
             response.end();
             return;
         }
-        
+
         // Set routes
         if (request.method === 'POST') {
 
@@ -34,8 +35,20 @@ gulp.task('proxy', function () {
 
         } 
         else if (request.method === 'GET') {
+            /* search filters */
             if(request.url === '/referential/search_filters.json') {
-
+                fs.readFile('./data/mock_search_filters.json', function (err, data) {
+                    response.setHeader('Content-Type', 'application/json');
+                    response.write(data);
+                    response.end();
+                });
+            }
+            else if(request.url === '/referential/search_filters_moderne.json') {
+                fs.readFile('./data/mock_search_filters_moderne.json', function (err, data) {
+                    response.setHeader('Content-Type', 'application/json');
+                    response.write(data);
+                    response.end();
+                });
             }
         }
         else {

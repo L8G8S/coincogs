@@ -1,18 +1,18 @@
 [{
     "title": "Catégories",
-    "more_label": "Plus de filtres",
+    "more_label": "Plus de catégories",
     "filters": [
         {"title": "Moderne", "count": 55457},
         {"title": "Coloniale", "count": 3510},
-        {"title": "Féodale", "count": 6982},
         {"title": "Royale", "count": 12569}, 
+        {"title": "Féodale", "count": 6982},
         {"title": "Carolingienne", "count": 6834},
         {"title": "Mérovingienne", "count": 5591}
     ]
 },
 {
     "title": "Métal",
-    "more_label": "Plus de filtres",
+    "more_label": "Plus de métaux",
     "filters": [
         {"title": "Or", "count": 45678},
         {"title": "Argent", "count": 35691},
@@ -25,7 +25,7 @@
 },
 {
     "title": "Atelier de Frappe",
-    "more_label": "Plus de filtres",
+    "more_label": "Plus d'ateliers",
     "filters": [
         {"title": "Paris", "count": 0},
         {"title": "Bordeaux", "count": 0},

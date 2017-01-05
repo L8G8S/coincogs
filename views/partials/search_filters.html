@@ -1,33 +1,208 @@
 <div class="search-filter-container">
-    <figure>
-        <figcaption>Categories</figcaption>
-        <ul>
-            <li><a><span class="title">Modernes</span><span class="count">55 457</span></a></li>
-            <li><a><span class="title">Féodales</span><span class="count">15 457</span></a></li>
-            <li><a><span class="title">Royales</span><span class="count">3 602</span></a></li>
-            <li><a><span class="more">+ More Filters</span></a></li>
-        </ul>
-    </figure>
-    <figure>
-        <figcaption>Metal</figcaption>
-        <ul>
-            <li><a><span class="title">Or</span></a></li>
-            <li><a><span class="title">Argent</span></a></li>
-            <li><a><span class="title">Aluminium</span></a></li>
-            <li><a><span class="title">Bronze-Aluminium</span></a></li>
-            <li><a><span class="title">Cupro-Nickel</span></a></li>
-            <li><a><span class="title">Duralium</span></a></li>
-            <li><a><span class="more">+ More Filters</span></a></li>
-        </ul>
-    </figure>
-    <figure>
-        <figcaption>Mint Town</figcaption>
-        <ul>
-            <li><a><span class="title">Paris</span></a></li>
-            <li><a><span class="title">Beaumont-Le-Roger</span></a></li>
-            <li><a><span class="title">Bordeaux</span></a></li>
-            <li><a><span class="title">Castelsarasin</span></a></li>
-            <li><a><span class="more">+ More Filters</span></a></li>
-        </ul>
+    <figure class="filters empty">
+        <figcaption>Filtres</figcaption>
+        <ul></ul>
     </figure>
 </div>
+
+
+<script type="text/javascript">
+    var filters = {
+
+        raiseFilterSelected : function(filterText) {
+            if(!filterText) return;
+
+            this.node.dispatchEvent(new CustomEvent('filterSelected', { bubbles: true, cancelable: false, detail: filterText }));
+        },
+
+        raiseFilterRemoved : function(filterText) {
+            if(!filterText) return;
+
+            this.node.dispatchEvent(new CustomEvent('filterRemoved', { bubbles: true, cancelable: false, detail: filterText }));
+        },
+
+        selectFilterHandler : function(evt) {
+            var target  = (evt.target || evt.srcElement);
+            while(target != null && target.tagName != 'A') target  = target.parentNode;
+
+            var filterText  = (target.querySelector('.title') || {}).innerText;
+            if(!filterText) return;
+
+            // append a new filter node as a UI feedback
+            var newFilterNode = document.createElement('li');
+            newFilterNode.innerHTML = `<a><span class="title">${filterText}</span><span class="cross" title="Remove filter">&times;</span></a>`;
+            newFilterNode.boundTo = target.parentNode;
+            this.filterNode.appendChild(newFilterNode);
+
+            newFilterNode.querySelector('a').addEventListener('click', this.removeFilterProxy);
+
+            // 
+            this.raiseFilterSelected(filterText);
+
+            // 
+            if(this.filterNode.parentNode.classList.contains('empty')) {
+                this.filterNode.parentNode.classList.remove('empty');
+            }
+        },
+
+        removeFilterHandler : function(evt) {
+            var target  = (evt.target || evt.srcElement);
+            while(target != null && target.tagName != 'LI') target  = target.parentNode;
+
+            if(target != null) {
+                if(target.boundTo) {
+                    target.boundTo.classList.remove('hidden');
+                    target.boundTo = null;
+                } 
+
+                target.querySelector('a').removeEventListener('click', this.removeFilterProxy);
+                this.filterNode.removeChild(target);
+
+                var filterText  = (target.querySelector('.title') || {}).innerText;
+                this.raiseFilterRemoved(filterText);
+
+                // 
+                if(!this.filterNode.hasChildNodes()) {
+                    this.filterNode.parentNode.classList.add('empty');
+                }
+            }
+        },
+
+        moreFilterHandler : function(evt) {
+            var target  = (evt.target || evt.srcElement);
+            while(target != null && target.tagName != 'A') target  = target.parentNode;
+
+            if(!target) return;
+
+            var list = target.parentNode.querySelector('ul');
+            if(list.classList.length == 0) {
+                list.classList.add('six-filters');
+            }
+            else if(list.classList.contains('six-filters')) {
+                list.classList.add('all-filters');
+            }
+
+            // check if there are still few 'hidden' filters
+            this.checkFilterButtonVisibility(target.parentNode);
+        },
+
+        checkFilterButtonVisibility: function(filterGroup) {
+            if(!filterGroup) return;
+
+            var list = filterGroup.querySelector('ul');
+            if(!list) return;
+
+            var contentHeight = 0;
+            Array.from(list.querySelectorAll('li:not(.hidden)')).forEach(function(li) { contentHeight += li.offsetHeight; });
+
+            if(contentHeight <= list.offsetHeight) {
+                filterGroup.querySelector('.more').classList.add('hidden');
+            }
+        },
+
+        registerHandlers : function() {
+            var self = this;
+
+            if(!this.selectFilterProxy) {
+                this.selectFilterProxy = function() { self.selectFilterHandler.apply(self, [...arguments]); }
+                this.removeFilterProxy = function() { self.removeFilterHandler.apply(self, [...arguments]); }
+                this.moreFilterProxy = function() { self.moreFilterHandler.apply(self, [...arguments]); }
+            }
+
+            Array.from(this.node.querySelectorAll('a:not(.more)')).forEach(function(a) {
+                a.addEventListener('click', self.selectFilterProxy);
+            }, this);
+
+            Array.from(this.node.querySelectorAll('a.more')).forEach(function(a) {
+                a.addEventListener('click', self.moreFilterProxy);
+            }, this);
+        },
+
+        unregisterHandlers : function() {
+            var self = this;
+
+            Array.from(this.node.querySelectorAll('a.title')).forEach(function(a) {
+                a.removeEventListener('click', self.selectFilterProxy);
+            }, this);
+        },
+
+        gatherFilters : function(url) {
+            var self = this;
+
+            Ajax.getJSON(url, false).then(function(data) {
+                if(data && data.length) {
+                    /*
+                    // remove existing filters
+                    Array.from(self.node.querySelectorAll('figure:not(.filters)')).forEach(function(filterGroupNode) {
+                        self.node.removeChild(filterGroupNode);
+                    });
+                    */
+
+                    var existingFilterGroupNodes = Array.from(self.node.querySelectorAll('figure:not(.filters)'));
+
+                    if(existingFilterGroupNodes.length == 0) {
+                        // append new filters
+                        data.forEach(function(filterGroupInfo) {
+
+                            var newFilterGroupHtml = `<figcaption>${filterGroupInfo.title}</figcaption><ul>`;
+                            filterGroupInfo.filters.forEach(function(filter) {
+                                newFilterGroupHtml += `<li><a><span class="title">${filter.title}</span><span class="count">${filter.count}</span></a></li>`;
+                            });
+                            newFilterGroupHtml += `</ul><a class="more">+ ${filterGroupInfo.more_label}</a>`;
+
+                            var newFilterGroupNode = document.createElement('figure');
+                            newFilterGroupNode.innerHTML = newFilterGroupHtml;
+
+                            self.node.appendChild(newFilterGroupNode);
+                        });
+
+                        self.registerHandlers();
+                    }
+                    else {
+                        // hide/remove previous filters
+                        existingFilterGroupNodes.forEach(function(filterGroupNode, groupIndex) {
+                            var filterGroupInfo = data[groupIndex];
+
+                            Array.from(filterGroupNode.querySelectorAll('li')).forEach(function(li, liIndex) {
+
+                                var liTitle = (li.querySelector('.title') || {}).innerHTML;
+                                var filterInfo = filterGroupInfo.filters.find(function(fi) { return fi.title == liTitle });
+
+                                if(!filterInfo){
+                                    li.classList.add('hidden');
+                                } 
+                                else {
+                                    // update and show count values
+                                    var liCount = li.querySelector('.count');
+                                    liCount.innerHTML = filterInfo.count;
+
+                                    li.classList.remove('hidden');
+                                }
+                            });
+
+                            self.checkFilterButtonVisibility(filterGroupNode);
+                        });
+                    }
+                }
+            });
+        },
+
+        init: function() {
+            this.node = document.querySelector('.search-filter-container');
+            this.filterNode = this.node.querySelector('.filters ul');
+
+            this.gatherFilters('http://localhost:8080/referential/search_filters.json');
+        }
+    };
+
+    filters.init();
+
+    // for testing purpose only
+    filters.node.addEventListener('filterSelected', function(evt) {
+        filters.gatherFilters('http://localhost:8080/referential/search_filters_moderne.json');
+    });
+    filters.node.addEventListener('filterRemoved', function(evt) {
+        filters.gatherFilters('http://localhost:8080/referential/search_filters.json');
+    });
+    
+</script>

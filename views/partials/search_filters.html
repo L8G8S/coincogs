@@ -34,6 +34,8 @@
             newFilterNode.boundTo = target.parentNode;
             this.filterNode.appendChild(newFilterNode);
 
+            target.parentNode.classList.add('selected');
+
             newFilterNode.querySelector('a').addEventListener('click', this.removeFilterProxy);
 
             // 
@@ -51,7 +53,7 @@
 
             if(target != null) {
                 if(target.boundTo) {
-                    target.boundTo.classList.remove('hidden');
+                    target.boundTo.classList.remove('selected');
                     target.boundTo = null;
                 } 
 
@@ -131,12 +133,6 @@
 
             Ajax.getJSON(url, false).then(function(data) {
                 if(data && data.length) {
-                    /*
-                    // remove existing filters
-                    Array.from(self.node.querySelectorAll('figure:not(.filters)')).forEach(function(filterGroupNode) {
-                        self.node.removeChild(filterGroupNode);
-                    });
-                    */
 
                     var existingFilterGroupNodes = Array.from(self.node.querySelectorAll('figure:not(.filters)'));
 
@@ -146,7 +142,9 @@
 
                             var newFilterGroupHtml = `<figcaption>${filterGroupInfo.title}</figcaption><ul>`;
                             filterGroupInfo.filters.forEach(function(filter) {
-                                newFilterGroupHtml += `<li><a><span class="title">${filter.title}</span><span class="count">${filter.count}</span></a></li>`;
+                                var filterTitle = filter.title;
+                                var filterCount = Format.formatInteger(filter.count, 'fr-FR');
+                                newFilterGroupHtml += `<li><a><span class="title">${filterTitle}</span><span class="count">${filterCount}</span></a></li>`;
                             });
                             newFilterGroupHtml += `</ul><a class="more">+ ${filterGroupInfo.more_label}</a>`;
 
@@ -172,11 +170,11 @@
                                     li.classList.add('hidden');
                                 } 
                                 else {
+                                    li.classList.remove('hidden');
+                                    
                                     // update and show count values
                                     var liCount = li.querySelector('.count');
-                                    liCount.innerHTML = filterInfo.count;
-
-                                    li.classList.remove('hidden');
+                                    liCount.innerHTML = Format.formatInteger(filterInfo.count, 'fr-FR');
                                 }
                             });
 

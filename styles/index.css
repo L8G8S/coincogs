@@ -18,27 +18,40 @@ body {
 .page-header {
   display: flex;
   flex-direction: row;
-  border-bottom: 1px solid red;
+  border-bottom: 1px solid #c0c0c0;
+  background-color: #ffffff;
   min-height: 5rem;
+  z-index: 2;
 }
 .page-content {
-  width: 1180px;
-  margin: auto;
-  padding: 2rem 1rem;
   display: flex;
   flex: 1 1 auto;
-  align-items: stretch;
+  flex-grow: 1;
+  overflow: hidden;
+  overflow-y: auto;
+  z-index: 1;
+}
+.page-content > .wrapper {
+  display: flex;
+  max-width: 1210px;
+  margin: auto;
+  padding: 2rem 1rem;
+  padding-top: 0;
 }
 .page-footer {
   display: flex;
   flex-direction: row;
-  border-top: 1px solid blue;
+  border-top: 1px solid #c0c0c0;
+  background-color: #f0f0f0;
   min-height: 5rem;
+  z-index: 2;
 }
 .search-filter-container {
   cursor: default;
   overflow: hidden;
   overflow-y: auto;
+  margin-right: 1rem;
+  min-width: 18rem;
 }
 .search-filter-container figure {
   display: block;
@@ -104,6 +117,9 @@ body {
 .search-filter-container figure ul li a span.count {
   position: absolute;
   right: 0;
+  display: inline-block;
+  max-width: 30rem;
+  overflow: hidden;
   padding-top: 0.2rem;
   padding-bottom: 0.2rem;
   padding-left: 0.5rem;
@@ -111,12 +127,29 @@ body {
   color: #808080;
   background-color: #f0f0f0;
   border-radius: 4px 0 0 4px;
+  -webkit-transition: max-width 250ms linear;
+  -moz-transition: max-width 250ms linear;
+  transition: max-width 250ms linear;
+}
+.search-filter-container figure ul li a span.count:empty {
+  padding-left: 0;
+  padding-right: 0;
+  max-width: 0;
+  overflow: hidden;
 }
 .search-filter-container figure ul li a:hover span.title {
   border-bottom: 1px solid #508ced;
 }
 .search-filter-container figure ul li a:hover span.more {
   color: initial;
+}
+.search-filter-container figure ul li.selected {
+  pointer-events: none;
+  /*
+                    a span.title {
+                        border-bottom: 1px solid @link-text-color;
+                    }
+                    */
 }
 .search-filter-container figure ul.six-filters {
   max-height: 16.2rem;
@@ -126,7 +159,7 @@ body {
 }
 .search-filter-container figure.filters {
   margin-bottom: 2rem;
-  max-height: 40rem;
+  max-height: none;
   opacity: 1;
   -webkit-transition: opacity 150ms linear, max-height 250ms linear;
   -moz-transition: opacity 150ms linear, max-height 250ms linear;
@@ -163,9 +196,88 @@ body {
 .search-filter-container figure.filters.empty {
   max-height: 0;
   opacity: 0;
+  margin-bottom: 0;
 }
 .search-filter-container figure.filters.empty figcaption {
   display: none;
+}
+.search-result-container {
+  position: relative;
+  cursor: default;
+  overflow: hidden;
+}
+.search-result-container nav {
+  position: fixed;
+  display: block;
+  min-height: 4.7rem;
+  width: 100%;
+  max-width: 99rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  /*border-top: 1px solid @theme-color03;*/
+  border-bottom: 1px solid #e0e0e0;
+  text-align: center;
+}
+.search-result-container nav .info {
+  font-weight: bold;
+}
+.search-result-container nav .bar {
+  position: absolute;
+  bottom: 1rem;
+  right: 0;
+}
+.search-result-container nav .bar select {
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+  margin-left: 1rem;
+  margin-right: 2rem;
+}
+.search-result-container nav .bar span {
+  font-weight: bold;
+}
+.search-result-container nav .bar span:first-of-type,
+.search-result-container nav .bar span:last-of-type {
+  display: inline-block;
+  font-size: 2rem;
+  cursor: pointer;
+  width: 1rem;
+}
+.search-result-container ul {
+  display: block;
+  margin: 0;
+  margin-top: 6rem;
+  padding: 0;
+}
+.search-result-container ul li {
+  display: inline-block;
+  vertical-align: top;
+  padding: 1rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+.search-result-container ul li figure {
+  display: block;
+  margin: 0;
+}
+.search-result-container ul li figure figcaption {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.search-result-container ul li figure figcaption span {
+  display: block;
+}
+.search-result-container ul li figure figcaption span.title {
+  font-weight: bold;
+}
+.search-result-container ul li figure figcaption span.engravor {
+  color: #808080;
+  font-size: smaller;
+}
+.search-result-container ul li figure img {
+  width: 15rem;
+}
+.search-result-container ul li:hover {
+  background-color: #ff6666;
 }
 .page-content > * {
   vertical-align: top;
@@ -175,10 +287,14 @@ body {
   display: inline-block;
 }
 .page-content .search-filter-container {
-  width: 20%;
+  /* width: 20%;*/
+  position: fixed;
+  margin-top: 4rem;
 }
 .page-content .search-result-container {
-  flex-grow: 1;
+  /*width: 78%;*/
+  margin-left: 20rem;
+  text-align: center;
 }
 /*.item {*/
 .item-picture {

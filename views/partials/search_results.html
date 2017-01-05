@@ -1,3 +1,101 @@
 <div class="search-result-container">
-@@include('./item_picture.html')
+    <nav>
+        <div class="bar">
+            <label>Trier par</label>
+            <select>
+                <option selected>Derniers Ajouts</option>
+                <option>Pièces de A-Z</option>
+                <option>Pièces de Z-A</option>
+            </select>
+            
+            <span>&lsaquo;</span>
+            <span>1 - 36</span>
+            <span>&rsaquo;</span>
+        </div>
+    </nav>
+    <ul>
+        <li>
+            <figure>
+                <figcaption><span class="title">1 Franc 1849 A</span><span class="engravor">Oudiné</span></figcaption>
+                <img src="images/1849a_1_franc_avers.png" alt="" />
+                <img src="images/1849a_1_franc_revers.png" alt="" />
+            </figure>
+        </li><li>
+            <figure>
+                <figcaption><span class="title">1 Franc 1866 K</span><span class="engravor">Barre</span></figcaption>
+                <img src="images/1866k_1_franc_avers.png" alt="" />
+                <img src="images/1866k_1_franc_revers.png" alt="" />
+            </figure>
+        </li><li>
+            <figure>
+                <figcaption><span class="title">1 Franc 1869 A</span><span class="engravor">Barre</span></figcaption>
+                <img src="images/1869a_1_franc_avers.png" alt="" />
+                <img src="images/1869a_1_franc_revers.png" alt="" />
+            </figure>
+        </li><li>
+            <figure>
+                <figcaption><span class="title">2 Franc 1898</span><span class="engravor">O. Roty</span></figcaption>
+                <img src="images/1898_2_franc_avers.png" alt="" />
+                <img src="images/1898_2_franc_avers.png" alt="" />
+            </figure>
+        </li><li>
+            <figure>
+                <figcaption><span class="title">2 Franc 1900</span><span class="engravor">O. Roty</span></figcaption>
+                <img src="images/1900_2_franc_avers.png" alt="" />
+                <img src="images/1900_2_franc_avers.png" alt="" />
+            </figure>
+        </li><li>
+            <figure>
+                <figcaption><span class="title">1 Franc 1901</span><span class="engravor">O. Roty</span></figcaption>
+                <img src="images/1901_1_franc_avers.png" alt="" />
+                <img src="images/1901_1_franc_avers.png" alt="" />
+            </figure>
+        </li><li>
+            <figure>
+                <figcaption><span class="title">1 Franc 1903</span><span class="engravor">O. Roty</span></figcaption>
+                <img src="images/1903_1_franc_avers.jpg" alt="" />
+                <img src="images/1903_1_franc_avers.jpg" alt="" />
+            </figure>
+        </li><li>
+            <figure>
+                <figcaption><span class="title">25 Centimes 1913</span><span class="engravor">Lindaueur</span></figcaption>
+                <img src="images/1913_25_centimes_avers.png" alt="" />
+                <img src="images/1913_25_centimes_revers.png" alt="" />
+            </figure>
+        </li><li>
+            <figure>
+                <figcaption>10 Centimes 1914</figcaption>
+                <img src="images/1914_10_centimes_avers.png" alt="" />
+                <img src="images/1914_10_centimes_revers.png" alt="" />
+            </figure>
+        </li><li>
+            <figure>
+                <figcaption>1 Franc 1959 Essai</figcaption>
+                <img src="images/1959essai_1_franc_avers.jpg" alt="" />
+                <img src="images/1959essai_1_franc_revers.jpg" alt="" />
+            </figure>
+        </li><li>
+            <figure>
+                <figcaption>1 Franc 1960</figcaption>
+                <img src="images/1960_1_franc_avers.jpg" alt="" />
+                <img src="images/1960_1_franc_revers.jpg" alt="" />
+            </figure>
+        </li><li>
+            <figure>
+                <figcaption>1 Franc 1971</figcaption>
+                <img src="images/1971_1_franc_avers.jpg" alt="" />
+                <img src="images/1971_1_franc_revers.jpg" alt="" />
+            </figure>
+        </li>
+    </ul>
 </div>
+
+<script type="text/javascript">
+    window.addEventListener('resize', function() {
+        var container = document.querySelector('.search-result-container');
+        var nav = container.querySelector('nav');
+        var list = container.querySelector('ul');
+        
+        nav.style.width = list.offsetWidth + 'px';
+    });
+</script>

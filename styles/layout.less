@@ -26,24 +26,40 @@ body {
     display: flex;
     flex-direction: row;
 
-    border-bottom: 1px solid @header-border-color;
+    border-bottom: 1px solid @theme-color02;
+    background-color : @theme-color00;
     min-height: 5rem;
+
+    z-index: 2;
 }
 
 .page-content {
-    width: 1180px;
-    margin: auto;
-    padding: 2rem 1rem;
-
     display: flex;
     flex: 1 1 auto;
-    align-items: stretch;
+    flex-grow: 1;
+
+    overflow: hidden;
+    overflow-y: auto;
+
+    >.wrapper {
+        display: flex;
+        max-width: 1210px;
+        margin: auto;
+        padding: 2rem 1rem;
+        padding-top: 0;
+    }
+
+    z-index: 1;
 }
 
 .page-footer {
     display: flex;
     flex-direction: row;
 
-    border-top: 1px solid @footer-border-color;
+    border-top: 1px solid @theme-color02;
+    background-color : @theme-color04;
+
     min-height: 5rem;
+
+    z-index: 2;
 }

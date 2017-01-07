@@ -213,6 +213,56 @@
     }
 }
 
+@keyframes show-item-frame {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@-o-keyframes show-item-frame {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@-ms-keyframes show-item-frame {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes show-item-frame {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@-moz-keyframes show-item-frame {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
 .search-result-container {
     position: relative;
     cursor: default;
@@ -251,14 +301,25 @@
                 margin-right: 2rem; 
             }
 
-            span {
+            a, span {
+                display: inline-block;
                 font-weight: bold;
+            }
 
+            a {
                 &:first-of-type, &:last-of-type {
-                    display: inline-block;
                     font-size: 2rem;
                     cursor: pointer;
-                    width: 1rem;
+                    width: 2rem;
+                }
+
+                &:hover {
+                    color: @theme-color08;
+                }
+
+                &.disabled{
+                    color: @theme-color02;
+                    pointer-events: none;
                 }
             }
         }
@@ -266,6 +327,9 @@
 
     ul {
         display: block;
+
+        width: 100%;
+        max-width: 99rem;
 
         margin: 0;
         margin-top: 6rem;
@@ -287,6 +351,7 @@
                 figcaption {
                     text-align: center;
                     margin-bottom: 1rem;
+                    min-height: 3.7rem;
 
                     span {
                         display: block;
@@ -295,7 +360,7 @@
                             font-weight: bold;
                         }
 
-                        &.engravor {
+                        &.engraver {
                             color: @theme-color05;
                             font-size: smaller;
                         }
@@ -307,9 +372,26 @@
                 }
             }
 
+            -webkit-transition: background-color 250ms linear;
+            -moz-transition: background-color 250ms linear;
+            -o-transition: background-color 250ms linear;
+            -ms-transition: background-color 250ms linear;
+            transition: background-color 250ms linear;
+
+            -o-animation: show-item-frame 1000ms 1 alternate;
+            -ms-animation: show-item-frame 1000ms 1 alternate;
+            -webkit-animation: show-item-frame 1000ms 1 alternate;
+            -moz-animation: show-item-frame 1000ms 1 alternate;
+            animation: show-item-frame 1000ms 1 alternate;
+
             &:hover {
-                background-color: #ff6666;
+                background-color: fade(@theme-color20, 80%);
             }
+        }
+
+        &:empty {
+            min-width: 99rem;
+            min-height: 50rem;
         }
     }
 }

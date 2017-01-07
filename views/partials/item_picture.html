@@ -1,17 +1,17 @@
 <div class="item-picture">
-    <button id="prev"><span>&lt;</span></button>
+    <button class="prev"><span>&lt;</span></button>
     <div class="image-container">
         <img src="./images/semeuse.png" />
         <img src="./images/semeuse.png" />
         <img src="./images/semeuse.png" />
         <img src="./images/semeuse.png" />
+        <img src="./images/1913_25_centimes_avers.png" />
         <img src="./images/semeuse.png" />
-        <img src="./images/semeuse.png" />
-        <img src="./images/semeuse.png" />
+        <img src="./images/1866k_1_franc_avers.png" />
         <img src="./images/semeuse.png" />
         <img src="./images/semeuse.png" />
     </div>
-    <button id="next"><span>&gt;</span></button>
+    <button class="next"><span>&gt;</span></button>
 </div>
 
 <script type="text/javascript">
@@ -30,7 +30,9 @@
         pict.insertBefore(lastImage, firstImage);
     }
 
-    document.querySelector('#next').addEventListener('click', swipeNext);
-    document.querySelector('#prev').addEventListener('click', swipePrevious);
+    if(document) {
+        document.querySelector('.item-picture .next').addEventListener('click', swipeNext);
+        document.querySelector('.item-picture .prev').addEventListener('click', swipePrevious);
+    }
 
 </script>

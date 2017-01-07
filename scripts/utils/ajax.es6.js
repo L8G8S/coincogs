@@ -54,4 +54,31 @@ class Ajax {
 
         return p;
     }
+
+    /**
+     * Gets raw HTML from the given url.
+     * @param  {String} url The url address to get the HTML from.
+     * @return {Promise} a Promise to handle asynchronous response.
+     */
+    static getHtml(url, sync) {
+        var xhr = new XMLHttpRequest();
+
+        var p = new Promise(function(resolve, reject) {
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        resolve(xhr.responseText);
+                    }
+                    else {
+                        reject(xhr.responseText);
+                    }
+                }
+            };
+        });
+
+        xhr.open('GET', url, !sync);
+        xhr.send();
+
+        return p;
+    }
 }

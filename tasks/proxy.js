@@ -27,19 +27,34 @@ function handlePostRequest(request, response) {
 function handleGetRequest(request, response) {
     if (request.method === 'GET') {
         /* search filters */
-        if(request.url === '/referential/search_filters.json') {
-            fs.readFile('./data/mock_search_filters.json', function (err, data) {
-                response.setHeader('Content-Type', 'application/json');
-                response.write(data);
+        if(request.url.indexOf('/search/filters') == 0) {
+            var mockFile = request.url.replace('/search/', './data/mock_search_');
+            if(fs.existsSync(mockFile)) {
+                fs.readFile(mockFile, function (err, data) {
+                    response.setHeader('Content-Type', 'application/json');
+                    response.write(data);
+                    response.end();
+                });
+            }
+            else {
+                response.statusCode = 404;
                 response.end();
-            });
+            }
         }
-        else if(request.url === '/referential/search_filters_moderne.json') {
-            fs.readFile('./data/mock_search_filters_moderne.json', function (err, data) {
-                response.setHeader('Content-Type', 'application/json');
-                response.write(data);
+        /*search results*/
+        else if(request.url.indexOf('/search/results') == 0) {
+            var mockFile = request.url.replace('/search/', './data/mock_search_');
+            if(fs.existsSync(mockFile)) {
+                fs.readFile(mockFile, function (err, data) {
+                    response.setHeader('Content-Type', 'application/json');
+                    response.write(data);
+                    response.end();
+                });
+            }
+            else {
+                response.statusCode = 404;
                 response.end();
-            });
+            }
         }
 
         return true;

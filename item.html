@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="styles/index.css" />
+
+    <link rel="import" id="loading-template" href="templates/loading.html">
+
+    <script src="scripts/utils/ajax.es6.js"></script>
+    <script src="scripts/utils/format.es6.js"></script>
+</head>
+
+<body>
+<header class="page-header"></header>
+
+<div class="page-content">
+    <div class="wrapper">
+        <div class="item-picture">
+    <button class="prev"><span>&lt;</span></button>
+    <div class="image-container">
+        <img src="./images/semeuse.png" />
+        <img src="./images/semeuse.png" />
+        <img src="./images/semeuse.png" />
+        <img src="./images/semeuse.png" />
+        <img src="./images/1913_25_centimes_avers.png" />
+        <img src="./images/semeuse.png" />
+        <img src="./images/1866k_1_franc_avers.png" />
+        <img src="./images/semeuse.png" />
+        <img src="./images/semeuse.png" />
+    </div>
+    <button class="next"><span>&gt;</span></button>
+</div>
+
+<script type="text/javascript">
+    function swipeNext() {
+        var pict = document.querySelector('.item-picture .image-container');
+        var firstImage = pict.querySelector('img:first-child');
+
+        pict.appendChild(firstImage);
+    }
+
+    function swipePrevious() {
+        var pict = document.querySelector('.item-picture .image-container');
+        var firstImage = pict.querySelector('img:first-child');
+        var lastImage = pict.querySelector('img:last-child');
+
+        pict.insertBefore(lastImage, firstImage);
+    }
+
+    if(document) {
+        document.querySelector('.item-picture .next').addEventListener('click', swipeNext);
+        document.querySelector('.item-picture .prev').addEventListener('click', swipePrevious);
+    }
+
+</script>
+        
+        
+        
+        
+    </div>
+</div>
+
+<footer class="page-footer"></footer>
+
+</body>
+</html>

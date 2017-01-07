@@ -7,7 +7,7 @@
 
 
 <script type="text/javascript">
-    var filters = {
+    var fc = {
 
         raiseFilterSelected : function(filterText) {
             if(!filterText) return;
@@ -27,6 +27,9 @@
 
             var filterText  = (target.querySelector('.title') || {}).innerText;
             if(!filterText) return;
+
+            // keep a track of the filter text
+            this.filters.push(filterText);
 
             // append a new filter node as a UI feedback
             var newFilterNode = document.createElement('li');
@@ -57,10 +60,13 @@
                     target.boundTo = null;
                 } 
 
+                // unregister properly all DOM stuff
                 target.querySelector('a').removeEventListener('click', this.removeFilterProxy);
                 this.filterNode.removeChild(target);
 
+                // remove kept filter text
                 var filterText  = (target.querySelector('.title') || {}).innerText;
+                if(this.filters.indexOf(filterText) != -1) this.filters.splice(this.filters.indexOf(filterText), 1);   
                 this.raiseFilterRemoved(filterText);
 
                 // 
@@ -92,40 +98,18 @@
             if(!filterGroup) return;
 
             var list = filterGroup.querySelector('ul');
-            if(!list) return;
+            var more = filterGroup.querySelector('.more');
+            if(!list || !more) return;
 
             var contentHeight = 0;
             Array.from(list.querySelectorAll('li:not(.hidden)')).forEach(function(li) { contentHeight += li.offsetHeight; });
 
             if(contentHeight <= list.offsetHeight) {
-                filterGroup.querySelector('.more').classList.add('hidden');
+                more.classList.add('hidden');
             }
-        },
-
-        registerHandlers : function() {
-            var self = this;
-
-            if(!this.selectFilterProxy) {
-                this.selectFilterProxy = function() { self.selectFilterHandler.apply(self, [...arguments]); }
-                this.removeFilterProxy = function() { self.removeFilterHandler.apply(self, [...arguments]); }
-                this.moreFilterProxy = function() { self.moreFilterHandler.apply(self, [...arguments]); }
+            else {
+                more.classList.remove('hidden');
             }
-
-            Array.from(this.node.querySelectorAll('a:not(.more)')).forEach(function(a) {
-                a.addEventListener('click', self.selectFilterProxy);
-            }, this);
-
-            Array.from(this.node.querySelectorAll('a.more')).forEach(function(a) {
-                a.addEventListener('click', self.moreFilterProxy);
-            }, this);
-        },
-
-        unregisterHandlers : function() {
-            var self = this;
-
-            Array.from(this.node.querySelectorAll('a.title')).forEach(function(a) {
-                a.removeEventListener('click', self.selectFilterProxy);
-            }, this);
         },
 
         gatherFilters : function(url) {
@@ -178,29 +162,75 @@
                                 }
                             });
 
-                            self.checkFilterButtonVisibility(filterGroupNode);
+                            window.setTimeout(function() { self.checkFilterButtonVisibility(filterGroupNode); }, 0);
                         });
                     }
                 }
+            }, function() {
+                
             });
+        },
+
+        registerHandlers : function() {
+            if(!this.selectFilterProxy) {
+                var self = this;
+                this.selectFilterProxy = function() { self.selectFilterHandler.apply(self, [...arguments]); }
+                this.removeFilterProxy = function() { self.removeFilterHandler.apply(self, [...arguments]); }
+                this.moreFilterProxy = function() { self.moreFilterHandler.apply(self, [...arguments]); }
+            }
+
+            Array.from(this.node.querySelectorAll('a:not(.more)')).forEach(function(a) {
+                a.addEventListener('click', this.selectFilterProxy);
+            }, this);
+
+            Array.from(this.node.querySelectorAll('a.more')).forEach(function(a) {
+                a.addEventListener('click', this.moreFilterProxy);
+            }, this);
+        },
+
+        unregisterHandlers : function() {
+            var self = this;
+
+            Array.from(this.node.querySelectorAll('a.title')).forEach(function(a) {
+                a.removeEventListener('click', self.selectFilterProxy);
+            }, this);
         },
 
         init: function() {
             this.node = document.querySelector('.search-filter-container');
             this.filterNode = this.node.querySelector('.filters ul');
+            this.filters = [];
 
-            this.gatherFilters('http://localhost:8080/referential/search_filters.json');
+            this.gatherFilters('http://localhost:8080/search/filters.json');
         }
     };
 
-    filters.init();
+    fc.init();
+
 
     // for testing purpose only
-    filters.node.addEventListener('filterSelected', function(evt) {
-        filters.gatherFilters('http://localhost:8080/referential/search_filters_moderne.json');
+    fc.node.addEventListener('filterSelected', function(evt) {
+        fc.gatherFilters('http://localhost:8080/search/filters_' + fc.filters.join('_').toLowerCase() + '.json');
+
+        if(rc) {
+            rc.gatherResults('http://localhost:8080/search/results_' + fc.filters.join('_').toLowerCase() + '.json');
+        }
     });
-    filters.node.addEventListener('filterRemoved', function(evt) {
-        filters.gatherFilters('http://localhost:8080/referential/search_filters.json');
+    fc.node.addEventListener('filterRemoved', function(evt) {
+        if(fc.filters.length > 0){
+            fc.gatherFilters('http://localhost:8080/search/filters_' + fc.filters.join('_').toLowerCase() + '.json');
+
+            if(rc) {
+                rc.gatherResults('http://localhost:8080/search/results_' + fc.filters.join('_').toLowerCase() + '.json');
+            }
+        }
+        else {
+            fc.gatherFilters('http://localhost:8080/search/filters.json');
+
+                        if(rc) {
+                rc.gatherResults('http://localhost:8080/search/results_1.json');
+            }
+        }
     });
     
 </script>

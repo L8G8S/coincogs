@@ -3,91 +3,17 @@
         <div class="bar">
             <label>Trier par</label>
             <select>
-                <option selected>Derniers Ajouts</option>
-                <option>Pièces de A-Z</option>
-                <option>Pièces de Z-A</option>
+                <option value="LastAdds" selected>Derniers Ajouts</option>
+                <option value="Ascending">Pièces de A-Z</option>
+                <option value="Descending">Pièces de Z-A</option>
             </select>
             
-            <span>&lsaquo;</span>
-            <span>1 - 36</span>
-            <span>&rsaquo;</span>
+            <a>&lsaquo;</a>
+            <span>-</span>
+            <a>&rsaquo;</a>
         </div>
     </nav>
-    <ul>
-        <li>
-            <figure>
-                <figcaption><span class="title">1 Franc 1849 A</span><span class="engravor">Oudiné</span></figcaption>
-                <img src="images/1849a_1_franc_avers.png" alt="" />
-                <img src="images/1849a_1_franc_revers.png" alt="" />
-            </figure>
-        </li><li>
-            <figure>
-                <figcaption><span class="title">1 Franc 1866 K</span><span class="engravor">Barre</span></figcaption>
-                <img src="images/1866k_1_franc_avers.png" alt="" />
-                <img src="images/1866k_1_franc_revers.png" alt="" />
-            </figure>
-        </li><li>
-            <figure>
-                <figcaption><span class="title">1 Franc 1869 A</span><span class="engravor">Barre</span></figcaption>
-                <img src="images/1869a_1_franc_avers.png" alt="" />
-                <img src="images/1869a_1_franc_revers.png" alt="" />
-            </figure>
-        </li><li>
-            <figure>
-                <figcaption><span class="title">2 Franc 1898</span><span class="engravor">O. Roty</span></figcaption>
-                <img src="images/1898_2_franc_avers.png" alt="" />
-                <img src="images/1898_2_franc_avers.png" alt="" />
-            </figure>
-        </li><li>
-            <figure>
-                <figcaption><span class="title">2 Franc 1900</span><span class="engravor">O. Roty</span></figcaption>
-                <img src="images/1900_2_franc_avers.png" alt="" />
-                <img src="images/1900_2_franc_avers.png" alt="" />
-            </figure>
-        </li><li>
-            <figure>
-                <figcaption><span class="title">1 Franc 1901</span><span class="engravor">O. Roty</span></figcaption>
-                <img src="images/1901_1_franc_avers.png" alt="" />
-                <img src="images/1901_1_franc_avers.png" alt="" />
-            </figure>
-        </li><li>
-            <figure>
-                <figcaption><span class="title">1 Franc 1903</span><span class="engravor">O. Roty</span></figcaption>
-                <img src="images/1903_1_franc_avers.jpg" alt="" />
-                <img src="images/1903_1_franc_avers.jpg" alt="" />
-            </figure>
-        </li><li>
-            <figure>
-                <figcaption><span class="title">25 Centimes 1913</span><span class="engravor">Lindaueur</span></figcaption>
-                <img src="images/1913_25_centimes_avers.png" alt="" />
-                <img src="images/1913_25_centimes_revers.png" alt="" />
-            </figure>
-        </li><li>
-            <figure>
-                <figcaption>10 Centimes 1914</figcaption>
-                <img src="images/1914_10_centimes_avers.png" alt="" />
-                <img src="images/1914_10_centimes_revers.png" alt="" />
-            </figure>
-        </li><li>
-            <figure>
-                <figcaption>1 Franc 1959 Essai</figcaption>
-                <img src="images/1959essai_1_franc_avers.jpg" alt="" />
-                <img src="images/1959essai_1_franc_revers.jpg" alt="" />
-            </figure>
-        </li><li>
-            <figure>
-                <figcaption>1 Franc 1960</figcaption>
-                <img src="images/1960_1_franc_avers.jpg" alt="" />
-                <img src="images/1960_1_franc_revers.jpg" alt="" />
-            </figure>
-        </li><li>
-            <figure>
-                <figcaption>1 Franc 1971</figcaption>
-                <img src="images/1971_1_franc_avers.jpg" alt="" />
-                <img src="images/1971_1_franc_revers.jpg" alt="" />
-            </figure>
-        </li>
-    </ul>
+    <ul></ul>
 </div>
 
 <script type="text/javascript">
@@ -98,4 +24,139 @@
         
         nav.style.width = list.offsetWidth + 'px';
     });
+
+    var rc= {
+        previousResultPage: function() {
+            this.pageIndex--;
+            if(this.pageIndex == 0) this.pageIndex = 1;
+
+            this.gatherResults('http://localhost:8080/search/results_' + this.pageIndex + '.json');
+        },
+
+        nextResultPage: function() {
+            this.pageIndex++;
+            if(this.pageIndex == this.pageCount) this.pageIndex = this.pageCount;
+
+            this.gatherResults('http://localhost:8080/search/results_' + this.pageIndex + '.json');
+        },
+
+        pickResultHandler: function(evt) {
+            var item = (evt.target || evt.srcElement);
+            
+            while(item != null && item.tagName != 'LI') item = item.parentNode;
+            if(item == null) return;
+
+            //console.log(item.itemInfo);
+            var self = this;
+
+            // show loading progress
+            self.loadingNode.classList.add('show');
+
+            // TODO: remove setTimeout later (here for demo purpose only)
+            window.setTimeout(function() {
+                window.location.href = "item.html";
+            },
+            1000);
+        },
+
+        clearResults: function(){
+            if(!this.listNode) return;
+
+            Array.from(this.listNode.querySelectorAll('li')).forEach(function(li){
+                li.itemInfo = null;
+                li.querySelector('a').removeEventListener('click', this.pickResultProxy);
+
+                this.listNode.removeChild(li);
+            }, this);
+        },
+
+        gatherResults : function(url) {
+            var self = this;
+
+            // show loading progress
+            self.loadingNode.classList.add('show');
+
+            // TODO: remove setTimeout later (here for demo purpose only)
+            window.setTimeout(function() {
+
+                Ajax.getJSON(url, false).then(function(data) {
+                    if(data) {
+                        // clear previous results
+                        self.clearResults();
+                        
+                        // update nav bar
+                        self.pageIndex = data.page_index;
+                        self.pageCount = data.page_count;
+                        self.navNode.querySelector('.bar span:nth-of-type(1)').innerHTML = `${data.page_index} - ${data.page_count}`;
+
+                        if(self.pageIndex <= 1) self.navNode.querySelector('a:nth-of-type(1)').classList.add('disabled');
+                        else self.navNode.querySelector('a:nth-of-type(1)').classList.remove('disabled');
+                        if(self.pageIndex == self.pageCount) self.navNode.querySelector('a:nth-of-type(2)').classList.add('disabled');
+                        else self.navNode.querySelector('a:nth-of-type(2)').classList.remove('disabled');
+
+                        // append results
+                        (data.results || []).forEach(function(resultInfo) {
+                            var title = `${resultInfo.desc} ${resultInfo.date || ''} ${resultInfo.letter || ''}`.trim();
+                            var engraver = `${resultInfo.engraver}`.trim();
+
+                            var newResultNode = document.createElement('li');
+                            newResultNode.innerHTML = `<a title="${title}"><figure><figcaption><span class="title">${title}</span><span class="engraver">${engraver}</span></figcaption><img src='${resultInfo.obverse}' alt/><img src='${resultInfo.reverse}' alt/></figure></a>`;
+                            newResultNode.itemInfo = resultInfo;
+
+                            self.listNode.appendChild(newResultNode);
+
+                            newResultNode.querySelector('a').addEventListener('click', self.pickResultProxy);
+                        });
+
+                        // hide progress
+                        self.loadingNode.classList.remove('show');
+                    }
+                }, function() {
+                    // hide progress
+                    self.loadingNode.classList.remove('show');
+                });
+
+            }, 1000);
+        },
+
+        registerHandlers: function() {
+            if(!this.previousResultPageProxy) {
+                var self = this;
+                this.previousResultPageProxy = function() { self.previousResultPage.apply(self, [...arguments]); }
+                this.nextResultPageProxy = function() { self.nextResultPage.apply(self, [...arguments]); }
+                this.pickResultProxy = function() { self.pickResultHandler.apply(self, [...arguments]); }
+            }
+
+            this.navNode.querySelector('a:nth-of-type(1)').addEventListener('click', this.previousResultPageProxy);
+            this.navNode.querySelector('a:nth-of-type(2)').addEventListener('click', this.nextResultPageProxy);
+        },
+
+        unregisterHandlers: function() {
+
+            this.navNode.querySelector('a:nth-of-type(1)').removeEventListener('click', this.previousResultPageProxy);
+            this.navNode.querySelector('a:nth-of-type(2)').removeEventListener('click', this.nextResultPageProxy);
+        },
+
+        init: function() {
+            this.pageIndex = 0;
+            this.pageCount = 0;
+            this.sortType = 'LastAdds';
+
+            this.node = document.querySelector('.search-result-container');
+            this.navNode = this.node.querySelector('nav');
+            this.listNode = this.node.querySelector('ul');
+
+            // import/create the loading frame
+            var template = document.querySelector('#loading-template').import.querySelector('template');
+            var content = document.importNode(template.content, true);
+            this.node.appendChild(content);
+
+            this.loadingNode = this.node.querySelector('.loading-overlay');
+
+            this.registerHandlers();
+            this.gatherResults('http://localhost:8080/search/results_1.json');
+        }
+    };
+
+    rc.init();
 </script>

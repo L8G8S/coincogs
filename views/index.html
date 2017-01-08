@@ -5,8 +5,21 @@
 <body>
 @@include('./partials/page_header.html')
 
-<div class="page-content">
+<div class="page-content index">
     <div class="wrapper">
+        <div class="page-nav">
+            <label>Trier par</label>
+            <select>
+                <option value="LastAdds" selected>Derniers Ajouts</option>
+                <option value="Ascending">Pièces de A-Z</option>
+                <option value="Descending">Pièces de Z-A</option>
+            </select>
+            <div>
+                <a>&lsaquo;</a>
+                <span>-</span>
+                <a>&rsaquo;</a>
+            </div>
+        </div>
         @@include('./partials/search_filters.html')
         @@include('./partials/search_results.html')
     </div>

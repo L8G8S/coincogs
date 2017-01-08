@@ -1,5 +1,7 @@
 @import "media";
+@import "mixins";
 @import "theme";
+
 
 .item-picture {
     position: relative;
@@ -7,7 +9,6 @@
 
     width: 57rem;
     margin: auto;
-    margin-top: 4rem;
 
     > * {
         display: inline-block;
@@ -23,8 +24,8 @@
 
         img {
             position: absolute;
-            display: inline;
-            height: 100%;
+            display: inline-block;
+            width: 15rem;
 
             border: 1px solid #d0d0d0;
 
@@ -130,4 +131,16 @@
             color: initial;
         }
     }
+}
+
+.item-details {
+
+}
+
+.item-serie-information {
+    
+}
+
+.item-serie-stats {
+    
 }

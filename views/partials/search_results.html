@@ -1,25 +1,11 @@
 <div class="search-result-container">
-    <nav>
-        <div class="bar">
-            <label>Trier par</label>
-            <select>
-                <option value="LastAdds" selected>Derniers Ajouts</option>
-                <option value="Ascending">Pièces de A-Z</option>
-                <option value="Descending">Pièces de Z-A</option>
-            </select>
-            
-            <a>&lsaquo;</a>
-            <span>-</span>
-            <a>&rsaquo;</a>
-        </div>
-    </nav>
     <ul></ul>
 </div>
 
 <script type="text/javascript">
     window.addEventListener('resize', function() {
         var container = document.querySelector('.search-result-container');
-        var nav = container.querySelector('nav');
+        var nav = document.querySelector('.page-nav');
         var list = container.querySelector('ul');
         
         nav.style.width = list.offsetWidth + 'px';
@@ -87,7 +73,7 @@
                         // update nav bar
                         self.pageIndex = data.page_index;
                         self.pageCount = data.page_count;
-                        self.navNode.querySelector('.bar span:nth-of-type(1)').innerHTML = `${data.page_index} - ${data.page_count}`;
+                        self.navNode.querySelector('span:nth-of-type(1)').innerHTML = `${data.page_index} - ${data.page_count}`;
 
                         if(self.pageIndex <= 1) self.navNode.querySelector('a:nth-of-type(1)').classList.add('disabled');
                         else self.navNode.querySelector('a:nth-of-type(1)').classList.remove('disabled');
@@ -143,7 +129,7 @@
             this.sortType = 'LastAdds';
 
             this.node = document.querySelector('.search-result-container');
-            this.navNode = this.node.querySelector('nav');
+            this.navNode = document.querySelector('.page-nav');
             this.listNode = this.node.querySelector('ul');
 
             // import/create the loading frame

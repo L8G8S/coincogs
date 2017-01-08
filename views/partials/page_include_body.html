@@ -1,0 +1,12 @@
+<script type="text/javascript">
+    function syncWrappersLayout() {
+        var header = document.querySelector('.page-header .wrapper');
+        var content = document.querySelector('.page-content .wrapper');
+
+        if(content && header) header.style.width = content.offsetWidth + 'px';
+    }
+
+    window.addEventListener('resize', syncWrappersLayout);
+
+    syncWrappersLayout();
+</script>

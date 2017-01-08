@@ -5,13 +5,14 @@
 <body>
 @@include('./partials/page_header.html')
 
-<div class="page-content">
+<div class="page-content item">
     <div class="wrapper">
-        @@include('./partials/item_picture.html')
+        <div class="page-nav">
+            <a>Acceuil</a><i class="fa fa-chevron-right" aria-hidden="true"></i><a>1 Franc 1849 A</a>
+        </div>
         @@include('./partials/item_details.html')
-        @@include('./partials/item_grade_list.html')
-        @@include('./partials/item_options.html')
-        @@include('./partials/item_stats.html')
+        @@include('./partials/item_serie_information.html')
+        @@include('./partials/item_serie_stats.html')
     </div>
 </div>
 

@@ -13,56 +13,116 @@
 </head>
 
 <body>
-<header class="page-header"></header>
-
-<div class="page-content">
+<header class="page-header">
     <div class="wrapper">
-        <div class="item-picture">
-    <button class="prev"><span>&lt;</span></button>
-    <div class="image-container">
-        <img src="./images/semeuse.png" />
-        <img src="./images/semeuse.png" />
-        <img src="./images/semeuse.png" />
-        <img src="./images/semeuse.png" />
-        <img src="./images/1913_25_centimes_avers.png" />
-        <img src="./images/semeuse.png" />
-        <img src="./images/1866k_1_franc_avers.png" />
-        <img src="./images/semeuse.png" />
-        <img src="./images/semeuse.png" />
+        <a class="logo" title="coincogs" href="http://localhost:4000"><img src="" alt /></a>
+        <div class="top-nav">
+            <div class="input-container search">
+                <input type="text" placeholder="Type your reference, year, metal..." /><button><i class="fa fa-search" aria-hidden="true"></i></button>
+            </div>
+            <div class="toggle-button">
+                <input type="checkbox" id="marketplace"/>
+                <label for="marketplace"><span>Marketplace</span><i class="fa fa-caret-down" aria-hidden="true"></i></label>
+            </div>
+            <div  class="toggle-button">
+                <input type="checkbox" id="community"/>
+                <label for="community"><span>Community</span><i class="fa fa-caret-down" aria-hidden="true"></i></i></label>
+            </div>
+        </nav>
     </div>
-    <button class="next"><span>&gt;</span></button>
+</header>
+
+<div class="page-content item">
+    <div class="wrapper">
+        <div class="page-nav">
+            <a>Acceuil</a><i class="fa fa-chevron-right" aria-hidden="true"></i><a>1 Franc 1849 A</a>
+        </div>
+        <div class="item-details">
+    <table>
+        <thead>
+            <tr><th colspan="2">Caractéristiques</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Description</td>
+                <td>1 Franc Céres</td>
+            </tr>
+            <tr>
+                <td>Valeur faciale</td>
+                <td>1 F</td>
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td>1849</td>
+            </tr>
+            <tr>
+                <td>Lettre</td>
+                <td>A</td>
+            </tr>
+            <tr>
+                <td>Atelier</td>
+                <td>Paris</td>
+            </tr>
+            <tr>
+                <td>Métal</td>
+                <td>Argent 900‰</td>
+            </tr>
+            <tr>
+                <td>Poids</td>
+                <td>5 g</td>
+            </tr>
+            <tr>
+                <td>Diamètre</td>
+                <td>23 mm</td>
+            </tr>
+            <tr>
+                <td>Epaisseur</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Tranche</td>
+                <td>Cannelée</td>
+            </tr>
+            <tr>
+                <td>Graveur</td>
+                <td>Eugène-André Oudiné</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr><th colspan="2">Informations complémentaires</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Propriétaire</td>
+                <td>michu</td>
+            </tr>
+            <tr>
+                <td>Grade / Etat</td>
+                <td>SUP</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
-
-<script type="text/javascript">
-    function swipeNext() {
-        var pict = document.querySelector('.item-picture .image-container');
-        var firstImage = pict.querySelector('img:first-child');
-
-        pict.appendChild(firstImage);
-    }
-
-    function swipePrevious() {
-        var pict = document.querySelector('.item-picture .image-container');
-        var firstImage = pict.querySelector('img:first-child');
-        var lastImage = pict.querySelector('img:last-child');
-
-        pict.insertBefore(lastImage, firstImage);
-    }
-
-    if(document) {
-        document.querySelector('.item-picture .next').addEventListener('click', swipeNext);
-        document.querySelector('.item-picture .prev').addEventListener('click', swipePrevious);
-    }
-
-</script>
-        
-        
         
         
     </div>
 </div>
 
 <footer class="page-footer"></footer>
+<script type="text/javascript">
+    function syncWrappersLayout() {
+        var header = document.querySelector('.page-header .wrapper');
+        var content = document.querySelector('.page-content .wrapper');
 
+        if(content && header) header.style.width = content.offsetWidth + 'px';
+    }
+
+    window.addEventListener('resize', syncWrappersLayout);
+
+    syncWrappersLayout();
+</script>
 </body>
 </html>

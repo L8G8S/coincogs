@@ -2360,6 +2360,7 @@ body {
   border-bottom: 1px solid #c0c0c0;
   background-color: #f0f0f0;
   min-height: 7rem;
+  max-height: 7rem;
   overflow: hidden;
 }
 .page-header > .wrapper {
@@ -2559,7 +2560,7 @@ button {
   border-radius: 0.4rem;
   cursor: pointer;
 }
-.input-container {
+.input-group {
   position: relative;
   display: inline-block;
   border: 1px solid #c0c0c0;
@@ -2567,24 +2568,24 @@ button {
   -moz-border-radius: 0.4rem;
   border-radius: 0.4rem;
 }
-.input-container > * {
+.input-group > * {
   vertical-align: middle;
 }
-.input-container input,
-.input-container button {
+.input-group input,
+.input-group button {
   border: none;
 }
-.input-container button {
+.input-group button {
   height: 100%;
 }
-.input-container.search {
+.input-group.search {
   background-color: #ffffff;
 }
-.input-container.search input {
+.input-group.search input {
   width: 100%;
   padding-right: 2.8rem;
 }
-.input-container.search button {
+.input-group.search button {
   position: absolute;
   top: 0;
   right: 0;
@@ -2596,7 +2597,7 @@ button {
   -moz-transition: opacity 250ms linear;
   transition: opacity 250ms linear;
 }
-.input-container.search button:hover {
+.input-group.search button:hover {
   opacity: 1;
 }
 /* The switch - the box around the slider */

@@ -3316,6 +3316,11 @@ button {
   max-width: 65rem;
   font-size: 1.6rem;
 }
+.item-details table thead .title {
+  font-size: 2rem;
+  margin: 0;
+  padding: 0;
+}
 .item-details table tr.info td {
   padding-bottom: 2rem;
 }
@@ -3331,12 +3336,12 @@ button {
 .item-details table td .tag {
   margin-left: -0.5rem;
 }
-.item-details .marketplace-info {
+.item-details .community-info {
   display: block;
   width: 100%;
   margin-top: 0.5rem;
 }
-.item-details .marketplace-info > a {
+.item-details .community-info > a {
   border-bottom: 1px solid transparent;
   color: #303030;
   line-height: 2.5rem;
@@ -3345,35 +3350,35 @@ button {
   -moz-transition: opacity 250ms linear;
   transition: opacity 250ms linear;
 }
-.item-details .marketplace-info > a:after {
+.item-details .community-info > a:after {
   content: "\a";
   white-space: pre;
 }
-.item-details .marketplace-info > a .fa {
+.item-details .community-info > a .fa {
   margin-right: 0.3rem;
 }
-.item-details .marketplace-info > a:hover {
+.item-details .community-info > a:hover {
   text-decoration: none;
   opacity: 1;
 }
-.item-details .marketplace-info > a.have .fa {
+.item-details .community-info > a.have .fa {
   color: #85e085;
 }
-.item-details .marketplace-info > a.have:hover {
+.item-details .community-info > a.have:hover {
   color: #2eb82e;
   border-bottom-color: #2eb82e;
 }
-.item-details .marketplace-info > a.have:hover .fa {
+.item-details .community-info > a.have:hover .fa {
   color: #2eb82e;
 }
-.item-details .marketplace-info > a.want .fa {
+.item-details .community-info > a.want .fa {
   color: #ff8080;
 }
-.item-details .marketplace-info > a.want:hover {
+.item-details .community-info > a.want:hover {
   color: #ff4d4d;
   border-bottom-color: #ff4d4d;
 }
-.item-details .marketplace-info > a.want:hover .fa {
+.item-details .community-info > a.want:hover .fa {
   color: #ff4d4d;
 }
 @media only screen and (max-width: 480px), only screen and (min-width: 480px) and (max-width: 1024px), only screen and (min-width: 750px) and (max-width: 1024px) and (orientation : portrait) {
@@ -3384,19 +3389,19 @@ button {
   .item-details .picture-carousel {
     margin: auto;
   }
-  .item-details .marketplace-info {
+  .item-details .community-info {
     text-align: left;
   }
-  .item-details .marketplace-info span {
+  .item-details .community-info span {
     display: none;
   }
-  .item-details .marketplace-info > a {
+  .item-details .community-info > a {
     opacity: 1;
   }
-  .item-details .marketplace-info > a.have .fa {
+  .item-details .community-info > a.have .fa {
     color: #2eb82e;
   }
-  .item-details .marketplace-info > a.want .fa {
+  .item-details .community-info > a.want .fa {
     color: #ff4d4d;
   }
   .item-details table {
@@ -3424,7 +3429,7 @@ button {
     width: 50%;
     max-width: 20rem;
   }
-  .item-details .marketplace-info span {
+  .item-details .community-info span {
     display: none;
   }
 }

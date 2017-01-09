@@ -43,6 +43,64 @@ button {
     cursor: pointer;        
 }
 
+.title {
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+.info {
+    color: @theme-color05;
+    font-size: 1.5rem;
+
+    .date {
+        
+    }
+}
+
+.link {
+    color: @theme-color08;
+    text-decoration: none;
+    cursor: pointer;
+
+    &.ref {
+
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &.disabled {
+        cursor: default;
+        color: @theme-color05;
+        pointer-events: none;
+    }
+}
+
+.tag {
+    padding: 0.3rem 0.5rem;
+    border: 1px solid transparent;
+    .border-radius(0.4rem);
+
+    &:hover {
+        border: 1px solid @theme-color02;
+
+        .fa-times {
+           color: @theme-color02;
+        }
+    }
+
+    .fa-times {
+        color: transparent;
+        margin-left: 0.5rem;
+        
+        &:hover {
+            cursor: pointer;
+            color: @theme-color22;
+        }
+    }
+}
+
 .input-group {
     position: relative;
     display: inline-block;

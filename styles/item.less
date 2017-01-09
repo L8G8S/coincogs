@@ -134,7 +134,164 @@
 }
 
 .item-details {
+    display: flex;
+    flex-direction: row;
 
+    padding-top: 6rem;
+    cursor: default;
+
+    >* {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .picture-carousel {
+        height: 21rem;
+        width: 47rem;
+
+        border: 1px solid @theme-color06;
+        .border-radius(0.5rem);
+        white-space: nowrap;
+        
+        > * {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        button {
+            height: 21rem;
+            color: @theme-color05;
+            background-color: transparent;
+            border-color: @theme-color06;
+            margin: -1px;
+            width: 2.5rem;
+
+            &:first-child {
+                .border-radius(0.4rem, 0, 0, 0.4rem);
+            }
+
+            &:last-child {
+                .border-radius(0, 0.4rem, 0.4rem, 0);
+            }
+
+            &:hover {
+                color: @theme-color01;
+                border-color: @theme-color02;
+                background-color: @theme-color03;
+            }
+        }
+
+        .slide-container {
+            position: relative;
+            width: 42rem;
+            height: 100%;
+            overflow: hidden;
+
+            figure {
+                position: absolute;
+                top:0;
+
+                margin: 0;
+                padding: 0 1rem;
+
+                figcaption {
+                    display: none;
+                }
+
+                img {
+                    width: 20rem;
+                }
+            }
+        }
+    }
+
+    table {
+        margin-left: 2rem;
+        border: none;
+        max-width: 65rem;
+
+        font-size: 1.6rem;
+
+        tr.info td {
+            padding-bottom: 2rem;
+        }
+
+        td {
+            vertical-align: top;
+            padding: 0.5rem;
+            white-space: normal;
+
+            &.title {
+                font-size: 1.6rem;
+                padding-right: 2rem;
+            }
+
+            .tag {
+                margin-left: -0.5rem;
+            }
+        }
+    }
+
+    .marketplace-info {
+        display: block;
+        width: 100%;
+        margin-top: 0.5rem;
+        
+        > a {
+            border-bottom: 1px solid transparent;
+
+            color: @theme-color01;
+            line-height: 2.5rem;
+            
+            opacity: 0.8;
+
+            .transition(opacity, 250ms, linear);
+
+            &:after {
+                content:"\a";
+                white-space: pre;
+            }
+                        
+            .fa {
+                margin-right: 0.3rem;
+            }
+
+            &:hover {
+                text-decoration: none;
+                opacity: 1;
+            }
+
+            &.have {
+                .fa {
+                    color: #85e085;
+                }
+
+                &:hover {
+                    color: @theme-color30;
+                    border-bottom-color: @theme-color30;
+
+                    .fa {
+                         color: @theme-color30;
+                    }
+                }
+            }
+
+            &.want {
+                .fa {
+                    color: #ff8080;
+                }
+
+                &:hover {
+                    color: @theme-color23;
+                    border-bottom-color: @theme-color23;
+
+                    .fa {
+                         color: @theme-color23;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .item-serie-information {
@@ -143,4 +300,79 @@
 
 .item-serie-stats {
     
+}
+
+@media @mobile, @tablet, @tabletPortrait {
+    .item-details {
+        text-align: center;
+        flex-direction: column;
+
+        .picture-carousel {
+            margin: auto;           
+        }
+
+        .marketplace-info {
+            text-align: left;
+
+            span {
+                display: none;
+            }
+
+            > a {
+                opacity: 1;
+
+                &.have {
+                    .fa {
+                        color: @theme-color30;
+                    }
+                }
+
+                &.want {
+                    .fa {
+                        color: @theme-color23;
+                    }
+                }
+            }
+        }
+
+        table {
+            margin: auto;
+
+            tbody {
+                text-align: left;
+            }
+        }
+    }
+}
+
+@media @mobile {
+    .item-details {
+        .picture-carousel {
+            width: 100%;
+            min-height: 15rem;
+
+            button {
+                display: none;
+            }
+
+            .slide-container {
+                width: 100%;
+
+                figure {
+                    padding: 0;
+
+                    img {
+                        width: 50%;
+                        max-width: 20rem;
+                    }
+                }
+            }
+        }
+
+        .marketplace-info {
+            span {
+                display: none;
+            }
+        }
+    }
 }

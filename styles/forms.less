@@ -244,3 +244,88 @@ button {
         }
     }
 }
+
+.toggle-container {
+    position: relative;
+    cursor: default;
+
+    label {
+        display: block;
+        width: 100%;
+
+        padding: 0.5rem;
+
+        background-color: @theme-color03;
+        .border-radius(0.4rem);
+        border: 1px solid @theme-color02;
+
+        color: @theme-color01;
+
+        cursor: pointer;
+
+        .transition(border-radius, 250ms, linear);
+
+        .fa {
+            position: absolute;
+            top: 0.8rem;
+            right: 1rem;
+
+            color: @theme-color05;
+
+            opacity: 0;
+            .transition(all, 250ms, linear);
+
+            pointer-events: none;
+
+            &.fa-plus {
+                opacity: 1;
+            }
+        }
+
+        &:hover {
+            .fa {
+                color: inherit;
+            }
+        }
+    }
+
+    input[type="checkbox"] {
+        display: none;
+        visibility: hidden;
+    
+        & ~ .content {
+            display: block;
+            width: 100%;
+            max-height: 0;
+            overflow: hidden;
+
+            padding: 0.5rem;
+
+            border: 1px solid transparent;
+            border-top: none;
+
+            .transition(all, 500ms, linear);
+        }
+
+        &:checked + label {
+            .border-radius(0.4rem, 0.4rem, 0, 0);
+
+            .fa {
+                &.fa-plus {
+                    opacity: 0;
+                    .rotate(90deg);
+                }
+
+                &.fa-minus {
+                    opacity: 1;
+                }
+            }
+        }
+
+        &:checked ~ .content {
+            border-color: @theme-color02;
+
+            max-height: 60rem;
+        }
+    }
+}

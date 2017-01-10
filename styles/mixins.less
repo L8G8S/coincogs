@@ -12,8 +12,9 @@
 
 .transition(@property, @time, @easing) {
   -webkit-transition: @property @time @easing;
-    -moz-transition: @property @time @easing;
-      transition: @property @time @easing;
+  -moz-transition: @property @time @easing;
+  -o-transition: @property @time @easing;
+  transition: @property @time @easing;
 }
 
 .placeholder-color(@color) {

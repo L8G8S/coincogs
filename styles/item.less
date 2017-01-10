@@ -190,6 +190,9 @@
             figure {
                 position: absolute;
                 top:0;
+                left:0;
+
+                .transition(1s);
 
                 margin: 0;
                 padding: 0 1rem;
@@ -208,7 +211,7 @@
     table {
         margin-left: 2rem;
         border: none;
-        max-width: 65rem;
+        /*max-width: 65rem;*/
 
         font-size: 1.6rem;
         line-height: 2rem;
@@ -322,6 +325,7 @@
     }
 
     table {
+        border-collapse: collapse;
         line-height: 2rem;
         border: none;
 
@@ -355,9 +359,133 @@
                 white-space: normal;
             }
 
+            p {
+                max-height: 15.3rem;
+                overflow: hidden;
+                overflow-y: auto;
+                text-overflow: ellipsis;
+            }
+
             .title {
                 display: inline-block;
                 flex: 0 0 9.4rem;
+            }
+        }
+    }
+}
+
+.item-serie-stats {
+    input[type="checkbox"] ~ .content {
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+
+        td, th {
+            border-left: 1px solid @theme-color09;
+
+            &:last-of-type {
+                border-right: 1px solid @theme-color09;
+            }
+
+            &:nth-last-of-type(1) {
+                border-left-color: transparent;
+                border-right-color: transparent;
+            }
+
+            &:nth-last-of-type(1), &:nth-last-of-type(2) {
+                max-width: 2rem;
+                padding: 0;
+            }
+        }
+
+        th {
+            background-color: @theme-color08;
+            padding: 0.5rem;
+
+            color: @theme-color00;
+            font-weight: normal;
+
+            border-top: 1px solid @theme-color09;
+            border-bottom: 1px solid @theme-color09;
+
+            min-width: 9.7rem;
+            
+            &:nth-of-type(1), &:nth-of-type(2) {
+                min-width: 5rem;
+            }
+
+            &:nth-last-of-type(1), &:nth-last-of-type(2) {
+                background-color: transparent;
+                border-top-color: transparent;
+                border-bottom-color: transparent;
+            }
+        }
+
+        td:nth-of-type(3), th:nth-of-type(3) {
+            text-align: right;
+        }
+
+        tr {
+            td {
+                border-bottom: 1px dashed @theme-color02;
+
+                a {
+                    display: inline-block;
+                    width: 100%;
+                    text-align: center;
+
+                    font-size: 2rem;
+                    padding: 0.2rem;
+                    margin: 0.2rem;
+
+                    border: 1px solid transparent;
+                    .border-radius(0.5rem);
+
+                    visibility: hidden;
+                    opacity: 0.5;
+                    cursor: pointer;
+
+                    /*.transition(opacity, 250ms, linear);*/
+
+                    &:hover {
+                        border-color: @theme-color08;
+                        opacity: 1;
+
+                        .fa-map-marker {
+                            color: @theme-color09;
+                        }
+
+                        &.want {
+                            border-color: @theme-color23;
+
+                            .fa-heart {
+                                color: @theme-color23;
+                            }
+                        }
+                    }
+                }
+
+                &:nth-last-of-type(1), &:nth-last-of-type(2) {
+                    border-bottom-color: transparent;
+                }
+            }
+
+            &:hover {
+                a {
+                    visibility: visible;
+                }
+            }
+
+            &:last-of-type {
+                td {
+                    border-bottom: 1px solid @theme-color09;
+
+                    &:nth-last-of-type(1), &:nth-last-of-type(2) {
+                        border-bottom-color: transparent;
+                    }
+                }
             }
         }
     }
@@ -398,11 +526,18 @@
 
         table {
             margin: auto;
+            max-width: 70rem;
 
             tbody {
                 text-align: left;
             }
         }
+    }
+
+    .item-serie-information, .item-serie-stats {
+        max-width: 70rem;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 

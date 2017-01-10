@@ -57,13 +57,39 @@ button {
     }
 }
 
+.tag {
+    padding: 0.3rem 0.5rem;
+    border: 1px solid transparent;
+    .border-radius(0.4rem);
+
+    &:hover {
+        border: 1px solid @theme-color02;
+
+        .fa {
+           color: @theme-color02;
+           display: inline;
+        }
+    }
+
+    .fa {
+        display: none;
+        color: transparent;
+        margin-left: 0.5rem;
+        
+        &:hover {
+            cursor: pointer;
+            color: @theme-color22;
+        }
+    }
+}
+
 .link {
     color: @theme-color08;
     text-decoration: none;
     cursor: pointer;
 
-    &.ref {
-
+    .fa {
+        text-decoration: none !important;
     }
 
     &:hover {
@@ -75,29 +101,9 @@ button {
         color: @theme-color05;
         pointer-events: none;
     }
-}
 
-.tag {
-    padding: 0.3rem 0.5rem;
-    border: 1px solid transparent;
-    .border-radius(0.4rem);
-
-    &:hover {
-        border: 1px solid @theme-color02;
-
-        .fa-times {
-           color: @theme-color02;
-        }
-    }
-
-    .fa-times {
-        color: transparent;
-        margin-left: 0.5rem;
-        
-        &:hover {
-            cursor: pointer;
-            color: @theme-color22;
-        }
+    &.tag:hover {
+        text-decoration: none;
     }
 }
 
@@ -300,6 +306,7 @@ button {
             overflow: hidden;
 
             padding: 0.5rem;
+            padding-bottom: 0;
 
             border: 1px solid transparent;
             border-top: none;
@@ -325,7 +332,21 @@ button {
         &:checked ~ .content {
             border-color: @theme-color02;
 
-            max-height: 60rem;
+            max-height: 80rem;
+
+            padding-bottom: 0.5rem;
+        }
+    }
+}
+
+@media @mobile, @tablet {
+    .tag {
+        &:hover {
+            border-color: transparent;
+
+            .fa {
+                display: none;
+            }
         }
     }
 }

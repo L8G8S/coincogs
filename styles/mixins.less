@@ -17,6 +17,13 @@
   transition: @property @time @easing;
 }
 
+.transition(@time) {
+  -webkit-transition: @time;
+  -moz-transition: @time;
+  -o-transition: @time;
+  transition:  @time;
+}
+
 .placeholder-color(@color) {
   &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: @color;

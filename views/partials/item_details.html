@@ -2,9 +2,21 @@
     <div class="picture-carousel">
         <button class="prev" title="Pièce précédente"><i class="fa fa-caret-left" aria-hidden="true"></i></button><!--
      --><div class="slide-container">
-            <figure>
+            <figure style="transform: translateX(-100%);">
+                <figcaption><span class="title">1 Franc Céres 1849 A</span></figcaption>
+                <img src="images/1913_25_centimes_avers.png" alt=""><img src="images/1913_25_centimes_revers.png" alt="">
+            </figure>
+            <figure style="transform: translateX(0%);">
                 <figcaption><span class="title">1 Franc Céres 1849 A</span></figcaption>
                 <img src="images/1849a_1_franc_avers.png" alt=""><img src="images/1849a_1_franc_revers.png" alt="">
+            </figure>
+            <figure style="transform: translateX(100%);">
+                <figcaption><span class="title">1 Franc Céres 1849 A</span></figcaption>
+                <img src="images/1866k_1_franc_avers.png" alt=""><img src="images/1866k_1_franc_revers.png" alt="">
+            </figure>
+            <figure style="transform: translateX(200%);">
+                <figcaption><span class="title">1 Franc Céres 1849 A</span></figcaption>
+                <img src="images/1898_2_franc_avers.png" alt=""><img src="images/1898_2_franc_revers.png" alt="">
             </figure>
         </div><!--
      --><button class="next" title="Pièce suivante"><i class="fa fa-caret-right" aria-hidden="true"></i></button>
@@ -42,3 +54,45 @@
         </tbody>
     </table>
 </div>
+
+<script type="text/javascript">
+    var pc = {
+        previousPictureHandle: function() {
+            Array.from(this.sliderNode.querySelectorAll('figure')).forEach(function(fig) {
+                var tv = parseInt(fig.style.transform.replace('translateX(', '')) - 100;
+                fig.style.transform = `translateX(${tv}%)`;
+            });
+        },
+
+        nextPictureHandle: function() {
+            Array.from(this.sliderNode.querySelectorAll('figure')).forEach(function(fig) {
+                var tv = parseInt(fig.style.transform.replace('translateX(', '')) + 100;
+                fig.style.transform = `translateX(${tv}%)`;
+            });
+        },
+
+        registerHandlers: function() {
+            if(!this.previousPictureProxy) {
+                var self = this;
+                this.previousPictureProxy = function() { self.previousPictureHandle.apply(self, [...arguments]); }
+                this.nextPictureProxy = function() { self.nextPictureHandle.apply(self, [...arguments]); }
+            }
+
+            this.node.querySelector('button.prev').addEventListener('click', this.previousPictureProxy);
+            this.node.querySelector('button.next').addEventListener('click', this.nextPictureProxy);
+        },
+
+        unregisterHandlers: function() {
+            this.node.querySelector('button.prev').removeEventListener('click', this.previousPictureHandle);
+            this.node.querySelector('button.next').removeEventListener('click', this.nextPictureHandle);
+        },
+
+        init: function() {
+            this.node = document.querySelector('.item-details .picture-carousel');
+            this.sliderNode = this.node.querySelector('.slide-container');
+            this.registerHandlers();
+        }
+    };
+
+    pc.init();
+</script>

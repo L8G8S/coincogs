@@ -41,9 +41,21 @@
     <div class="picture-carousel">
         <button class="prev" title="Pièce précédente"><i class="fa fa-caret-left" aria-hidden="true"></i></button><!--
      --><div class="slide-container">
-            <figure>
+            <figure style="transform: translateX(-100%);">
+                <figcaption><span class="title">1 Franc Céres 1849 A</span></figcaption>
+                <img src="images/1913_25_centimes_avers.png" alt=""><img src="images/1913_25_centimes_revers.png" alt="">
+            </figure>
+            <figure style="transform: translateX(0%);">
                 <figcaption><span class="title">1 Franc Céres 1849 A</span></figcaption>
                 <img src="images/1849a_1_franc_avers.png" alt=""><img src="images/1849a_1_franc_revers.png" alt="">
+            </figure>
+            <figure style="transform: translateX(100%);">
+                <figcaption><span class="title">1 Franc Céres 1849 A</span></figcaption>
+                <img src="images/1866k_1_franc_avers.png" alt=""><img src="images/1866k_1_franc_revers.png" alt="">
+            </figure>
+            <figure style="transform: translateX(200%);">
+                <figcaption><span class="title">1 Franc Céres 1849 A</span></figcaption>
+                <img src="images/1898_2_franc_avers.png" alt=""><img src="images/1898_2_franc_revers.png" alt="">
             </figure>
         </div><!--
      --><button class="next" title="Pièce suivante"><i class="fa fa-caret-right" aria-hidden="true"></i></button>
@@ -81,6 +93,48 @@
         </tbody>
     </table>
 </div>
+
+<script type="text/javascript">
+    var pc = {
+        previousPictureHandle: function() {
+            Array.from(this.sliderNode.querySelectorAll('figure')).forEach(function(fig) {
+                var tv = parseInt(fig.style.transform.replace('translateX(', '')) - 100;
+                fig.style.transform = `translateX(${tv}%)`;
+            });
+        },
+
+        nextPictureHandle: function() {
+            Array.from(this.sliderNode.querySelectorAll('figure')).forEach(function(fig) {
+                var tv = parseInt(fig.style.transform.replace('translateX(', '')) + 100;
+                fig.style.transform = `translateX(${tv}%)`;
+            });
+        },
+
+        registerHandlers: function() {
+            if(!this.previousPictureProxy) {
+                var self = this;
+                this.previousPictureProxy = function() { self.previousPictureHandle.apply(self, [...arguments]); }
+                this.nextPictureProxy = function() { self.nextPictureHandle.apply(self, [...arguments]); }
+            }
+
+            this.node.querySelector('button.prev').addEventListener('click', this.previousPictureProxy);
+            this.node.querySelector('button.next').addEventListener('click', this.nextPictureProxy);
+        },
+
+        unregisterHandlers: function() {
+            this.node.querySelector('button.prev').removeEventListener('click', this.previousPictureHandle);
+            this.node.querySelector('button.next').removeEventListener('click', this.nextPictureHandle);
+        },
+
+        init: function() {
+            this.node = document.querySelector('.item-details .picture-carousel');
+            this.sliderNode = this.node.querySelector('.slide-container');
+            this.registerHandlers();
+        }
+    };
+
+    pc.init();
+</script>
         <div class="item-serie-information toggle-container">
     <input type="checkbox" id="show_serie_information" checked />
     <label for="show_serie_information"><span class="title">Informations sur la série</span><i class="fa fa-plus" aria-hidden="true"></i><i class="fa fa-minus" aria-hidden="true"></i></label>
@@ -108,15 +162,15 @@
                 </tr>
                 <tr>
                     <td class="title">Diamètre</td>
-                    <td><span class="tag">23 mm<i class="fa fa-times" aria-hidden="true"></i></span></td>
+                    <td colspan="3"><span class="tag">23 mm<i class="fa fa-times" aria-hidden="true"></i></span></td>
                 </tr>
                 <tr>
                     <td class="title">Tranche</td>
-                    <td><span class="tag">Cannelée<i class="fa fa-times" aria-hidden="true"></i></span></td>
+                    <td colspan="3"><span class="tag">Cannelée<i class="fa fa-times" aria-hidden="true"></i></span></td>
                 </tr>
                 <tr>
                     <td class="title">Graveur</td>
-                    <td><span class="tag">Eugène-André Oudiné<i class="fa fa-times" aria-hidden="true"></i></span></td>
+                    <td colspan="3"><span class="tag">Eugène-André Oudiné<i class="fa fa-times" aria-hidden="true"></i></span></td>
                 </tr>
             </tbody>
         </table>
@@ -136,26 +190,84 @@
 
 </div>
         <div class="item-serie-stats toggle-container">
-    <input type="checkbox" id="show_serie_stats" />
+    <input type="checkbox" id="show_serie_stats"  />
     <label for="show_serie_stats"><span class="title">Détail du tirage</span><i class="fa fa-plus" aria-hidden="true"></i><i class="fa fa-minus" aria-hidden="true"></i></label>
 
-    <table class="content">
-        
-    </table>
-
+    <div class="content">
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Atelier</th>
+                    <th>Quantité</th>
+                    <th>TB</th>
+                    <th>TTB</th>
+                    <th>SUP</th>
+                    <th>SPL</th>
+                    <th>FDC</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1849</td><td>A</td><td>1 328 135</td><td></td><td></td><td></td><td></td><td></td>
+                    <td><a title="Ajouter à ma collection" class="add"><i class="fa fa-map-marker" aria-hidden="true"></i></a></td>
+                    <td><a title="Ajouter à ma wish-list" class="want"><i class="fa fa-heart" aria-hidden="true"></i></a></td>
+                </tr>
+                <tr>
+                    <td></td><td>BB</td><td>29 446</td><td></td><td></td><td></td><td></td><td></td>
+                    <td><a title="Ajouter à ma collection" class="add"><i class="fa fa-map-marker" aria-hidden="true"></i></a></td>
+                    <td><a title="Ajouter à ma wish-list" class="want"><i class="fa fa-heart" aria-hidden="true"></i></a></td>
+                </tr>
+                <tr>
+                    <td></td><td>K</td><td>19 296</td><td></td><td></td><td></td><td></td><td></td>
+                    <td><a title="Ajouter à ma collection" class="add"><i class="fa fa-map-marker" aria-hidden="true"></i></a></td>
+                    <td><a title="Ajouter à ma wish-list" class="want"><i class="fa fa-heart" aria-hidden="true"></i></a></td>
+                </tr>
+                <tr>
+                    <td>1850</td><td>A</td><td>1 001 108</td><td></td><td></td><td></td><td></td><td></td>
+                    <td><a title="Ajouter à ma collection" class="add"><i class="fa fa-map-marker" aria-hidden="true"></i></a></td>
+                    <td><a title="Ajouter à ma wish-list" class="want"><i class="fa fa-heart" aria-hidden="true"></i></a></td>
+                </tr>
+                <tr>
+                    <td></td><td>A</td><td>(inlus)</td><td></td><td></td><td></td><td></td><td></td>
+                    <td><a title="Ajouter à ma collection" class="add"><i class="fa fa-map-marker" aria-hidden="true"></i></a></td>
+                    <td><a title="Ajouter à ma wish-list" class="want"><i class="fa fa-heart" aria-hidden="true"></i></a></td>
+                </tr>
+                <tr>
+                    <td></td><td>BB</td><td>198 392</td><td></td><td></td><td></td><td></td><td></td>
+                    <td><a title="Ajouter à ma collection" class="add"><i class="fa fa-map-marker" aria-hidden="true"></i></a></td>
+                    <td><a title="Ajouter à ma wish-list" class="want"><i class="fa fa-heart" aria-hidden="true"></i></a></td>
+                </tr>
+                <tr>
+                    <td></td><td>BB</td><td>(inlus)</td><td></td><td></td><td></td><td></td><td></td>
+                    <td><a title="Ajouter à ma collection" class="add"><i class="fa fa-map-marker" aria-hidden="true"></i></a></td>
+                    <td><a title="Ajouter à ma wish-list" class="want"><i class="fa fa-heart" aria-hidden="true"></i></a></td>
+                </tr>
+                <tr>
+                    <td></td><td>K</td><td>34 979</td><td></td><td></td><td></td><td></td><td></td>
+                    <td><a title="Ajouter à ma collection" class="add"><i class="fa fa-map-marker" aria-hidden="true"></i></a></td>
+                    <td><a title="Ajouter à ma wish-list" class="want"><i class="fa fa-heart" aria-hidden="true"></i></a></td>
+                </tr>
+                <tr>
+                    <td>1851</td><td>A</td><td>637 132</td><td></td><td></td><td></td><td></td><td></td>
+                    <td><a title="Ajouter à ma collection" class="add"><i class="fa fa-map-marker" aria-hidden="true"></i></a></td>
+                    <td><a title="Ajouter à ma wish-list" class="want"><i class="fa fa-heart" aria-hidden="true"></i></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
     </div>
 </div>
 
 <script type="text/javascript">
     window.addEventListener('resize', function() {
-        /*
-        var container = document.querySelector('.search-result-container');
         var nav = document.querySelector('.page-nav');
-        var list = container.querySelector('ul');
+        var details = document.querySelector('.item-details');
         
-        nav.style.width = list.offsetWidth + 'px';
-        */
+        nav.style.width = details.offsetWidth + 'px';
     });
 </script>
 

@@ -1,0 +1,122 @@
+@import "media";
+@import "mixins";
+@import "theme";
+
+.user-item {
+    .user-resume {
+        display: inline-block;
+
+        padding: 1rem;
+        margin: 1rem;
+        margin-left: 0;
+
+        line-height: 2rem;
+
+        background-color: @theme-color06;
+        border: 1px solid @theme-color03;
+        .border-radius(0.4rem);
+
+        >* {
+            vertical-align: middle;
+        }
+
+        .logo {
+            height: 5rem;
+        }
+
+        .title {
+            font-size: 2rem;
+        }
+
+        .rating {
+            display: block;
+
+            >* {
+                vertical-align: middle;
+            }
+
+            span {
+                padding: 0.3rem 0.5rem;
+                margin-right: 0.5rem;
+
+                background-color: @theme-color24;
+
+                .border-radius(0.4rem);
+
+                text-align: center;
+                color: @theme-color00;
+
+                text-shadow: 0 0 4px @theme-color21;
+            }
+
+            .fa {
+                color: @theme-color21;
+                font-size: 1.8rem;
+            }
+        }
+    }
+
+    .user-items-header {
+        display: flex;
+        flex-grow: 1;
+
+        >* {
+            vertical-align: middle;
+        }
+        
+        .user-resume {
+            .rating {
+                margin-left: 5rem;
+            }
+        }
+
+        ul {
+            display: inline-block;
+            flex-grow: 0.7;
+            text-align: center;
+
+            margin: 0;
+            padding: 0;
+
+            li {
+                display: inline;
+
+                .link {
+                    display: inline-block;
+                    min-width: 10rem;
+
+                    padding: 1rem;
+                    margin: 1rem;
+
+                    text-align: center;
+                    line-height: 3rem;
+
+                    background-color: @theme-color00;
+                    border: 1px solid @theme-color03;
+                    .border-radius(0.4rem);
+
+                    &.selected {
+                        background-color: @theme-color08;
+                        color: @theme-color00;
+
+                        &.disabled {
+                            color: @theme-color04;
+                            background-color: fade(@theme-color08, 60%);
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    .search-result-container {
+        margin: auto;
+        width: 100%;
+
+        ul {
+            margin-top: 13rem;
+            max-width: none;
+        }
+    }
+}

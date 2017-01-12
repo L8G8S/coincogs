@@ -1,4 +1,74 @@
-<div class="search-result-container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="styles/index.css" />
+
+    <link rel="import" id="loading-template" href="templates/loading.html">
+
+    <script src="scripts/utils/ajax.es6.js"></script>
+    <script src="scripts/utils/format.es6.js"></script>
+</head>
+
+<body>
+<header class="page-header">
+    <div class="wrapper">
+        <a class="logo" title="coincogs" href="http://localhost:4000"><img src="" alt /></a>
+        <div class="top-nav">
+            <div class="input-group search">
+                <input type="text" placeholder="Type your reference, year, metal..." /><button title="Click to search"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </div>
+            <div class="toggle-button">
+                <input type="checkbox" id="marketplace"/>
+                <label for="marketplace"><span>Marketplace</span><i class="fa fa-caret-down" aria-hidden="true"></i></label>
+            </div>
+            <div  class="toggle-button">
+                <input type="checkbox" id="community"/>
+                <label for="community"><span>Community</span><i class="fa fa-caret-down" aria-hidden="true"></i></i></label>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<div class="page-content user-item">
+    <div class="wrapper">
+        <div class="page-nav">
+            <div class="user-items-header">
+    <div class="user-resume">
+        <img class="logo" src="images/michu_avatar.png" alt="" />
+        <span class="title">@ michu</span>
+        <div class="rating">
+            <span>5.0</span>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+        </div>
+    </div>
+
+    <ul>
+        <li><a class="link selected">Modernes</a></li>
+        <li><a class="link">Royales</a></li>
+    </ul>
+</div>
+            <div class="nav-bar">
+    <label>Trier par</label>
+    <select>
+        <option value="LastAdds" selected>Derniers Ajouts</option>
+        <option value="Ascending">Pièces de A-Z</option>
+        <option value="Descending">Pièces de Z-A</option>
+    </select>
+    <div>
+        <a>&lsaquo;</a>
+        <span>-</span>
+        <a>&rsaquo;</a>
+    </div>
+</div>
+        </div>
+        <div class="search-result-container">
     <ul></ul>
 </div>
 
@@ -164,3 +234,21 @@
 
     rc.init();
 </script>
+    </div>
+</div>
+
+<footer class="page-footer"></footer>
+<script type="text/javascript">
+    function syncWrappersLayout() {
+        var header = document.querySelector('.page-header .wrapper');
+        var content = document.querySelector('.page-content .wrapper');
+
+        if(content && header) header.style.width = content.offsetWidth + 'px';
+    }
+
+    window.addEventListener('resize', syncWrappersLayout);
+
+    syncWrappersLayout();
+</script>
+</body>
+</html>

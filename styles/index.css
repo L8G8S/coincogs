@@ -2431,6 +2431,7 @@ body {
 }
 .page-content .page-nav {
   display: block;
+  margin: auto;
   min-height: 4.7rem;
   line-height: 4.7rem;
   width: 100%;
@@ -2459,6 +2460,41 @@ body {
 .page-content .page-nav > i {
   font-size: 1.2rem;
 }
+.page-content .page-nav .nav-bar {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.page-content .page-nav .nav-bar select {
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+  margin-left: 1rem;
+  margin-right: 2rem;
+}
+.page-content .page-nav .nav-bar div:last-child {
+  display: inline-block;
+}
+.page-content .page-nav .nav-bar a,
+.page-content .page-nav .nav-bar span {
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+}
+.page-content .page-nav .nav-bar a:first-of-type,
+.page-content .page-nav .nav-bar a:last-of-type {
+  font-size: 2rem;
+  width: 2rem;
+  cursor: pointer;
+  text-align: center;
+}
+.page-content .page-nav .nav-bar a:hover {
+  color: #508ced;
+}
+.page-content .page-nav .nav-bar a.disabled {
+  color: #c0c0c0;
+  pointer-events: none;
+}
 .page-content.index .page-nav {
   position: fixed;
   max-width: 97rem;
@@ -2466,42 +2502,14 @@ body {
   margin-left: 20rem;
   background-color: rgba(255, 255, 255, 0.8);
 }
-.page-content.index .page-nav .info {
-  font-weight: bold;
-}
-.page-content.index .page-nav select {
-  font-family: inherit;
-  font-size: inherit;
-  outline: none;
-  margin-left: 1rem;
-  margin-right: 2rem;
-}
-.page-content.index .page-nav div:last-child {
-  display: inline-block;
-}
-.page-content.index .page-nav a,
-.page-content.index .page-nav span {
-  display: inline-block;
-  font-weight: bold;
-  text-decoration: none;
-}
-.page-content.index .page-nav a:first-of-type,
-.page-content.index .page-nav a:last-of-type {
-  font-size: 2rem;
-  width: 2rem;
-  cursor: pointer;
-  text-align: center;
-}
-.page-content.index .page-nav a:hover {
-  color: #508ced;
-}
-.page-content.index .page-nav a.disabled {
-  color: #c0c0c0;
-  pointer-events: none;
-}
-.page-content.item .page-nav {
+.page-content.item .page-nav,
+.page-content.user-item .page-nav {
   position: absolute;
   max-width: 121rem;
+}
+.page-content.user-item .page-nav .nav-bar label,
+.page-content.user-item .page-nav .nav-bar select {
+  display: none;
 }
 .page-footer {
   /*
@@ -3700,6 +3708,97 @@ button {
   .item-details .community-info span {
     display: none;
   }
+}
+.user-item .user-resume {
+  display: inline-block;
+  padding: 1rem;
+  margin: 1rem;
+  margin-left: 0;
+  line-height: 2rem;
+  background-color: #fafafa;
+  border: 1px solid #e0e0e0;
+  -webkit-border-radius: 0.4rem;
+  -moz-border-radius: 0.4rem;
+  border-radius: 0.4rem;
+}
+.user-item .user-resume > * {
+  vertical-align: middle;
+}
+.user-item .user-resume .logo {
+  height: 5rem;
+}
+.user-item .user-resume .title {
+  font-size: 2rem;
+}
+.user-item .user-resume .rating {
+  display: block;
+}
+.user-item .user-resume .rating > * {
+  vertical-align: middle;
+}
+.user-item .user-resume .rating span {
+  padding: 0.3rem 0.5rem;
+  margin-right: 0.5rem;
+  background-color: #ff9933;
+  -webkit-border-radius: 0.4rem;
+  -moz-border-radius: 0.4rem;
+  border-radius: 0.4rem;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 0 0 4px #ffcc66;
+}
+.user-item .user-resume .rating .fa {
+  color: #ffcc66;
+  font-size: 1.8rem;
+}
+.user-item .user-items-header {
+  display: flex;
+  flex-grow: 1;
+}
+.user-item .user-items-header > * {
+  vertical-align: middle;
+}
+.user-item .user-items-header .user-resume .rating {
+  margin-left: 5rem;
+}
+.user-item .user-items-header ul {
+  display: inline-block;
+  flex-grow: 0.7;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+.user-item .user-items-header ul li {
+  display: inline;
+}
+.user-item .user-items-header ul li .link {
+  display: inline-block;
+  min-width: 10rem;
+  padding: 1rem;
+  margin: 1rem;
+  text-align: center;
+  line-height: 3rem;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  -webkit-border-radius: 0.4rem;
+  -moz-border-radius: 0.4rem;
+  border-radius: 0.4rem;
+}
+.user-item .user-items-header ul li .link.selected {
+  background-color: #508ced;
+  color: #ffffff;
+}
+.user-item .user-items-header ul li .link.selected.disabled {
+  color: #f0f0f0;
+  background-color: rgba(80, 140, 237, 0.6);
+}
+.user-item .search-result-container {
+  margin: auto;
+  width: 100%;
+}
+.user-item .search-result-container ul {
+  margin-top: 13rem;
+  max-width: none;
 }
 html {
   font-size: 62.5%;

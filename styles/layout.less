@@ -123,6 +123,7 @@ body {
 
     .page-nav {
         display: block;
+        margin: auto;
         min-height: 4.7rem;
         line-height: 4.7rem;
 
@@ -158,22 +159,11 @@ body {
         }
 
         z-index: 99;
-    }
 
-    z-index: 1;
-
-    &.index {
-        .page-nav {
-            position: fixed;
-            max-width: 97rem;
-            text-align: right;
-            margin-left: 20rem;
-
-            background-color: fade(@theme-color00, 80%);
-
-            .info {
-                font-weight: bold;
-            }
+        .nav-bar {
+            position: absolute;
+            right: 0;
+            bottom: 0;
 
             select {
                 font-family: inherit;
@@ -214,10 +204,33 @@ body {
         }
     }
 
-    &.item {
+    z-index: 1;
+
+    &.index {
+        .page-nav {
+            position: fixed;
+            max-width: 97rem;
+            text-align: right;
+            margin-left: 20rem;
+
+            background-color: fade(@theme-color00, 80%);
+        }
+    }
+
+    &.item, &.user-item {
         .page-nav {
             position: absolute;
             max-width: @page-width;
+        }
+    }
+
+    &.user-item {
+        .page-nav {
+            .nav-bar {
+                label, select {
+                    display: none;
+                }
+            }
         }
     }
 }

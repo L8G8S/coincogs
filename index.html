@@ -35,17 +35,19 @@
 <div class="page-content index">
     <div class="wrapper">
         <div class="page-nav">
-            <label>Trier par</label>
-            <select>
-                <option value="LastAdds" selected>Derniers Ajouts</option>
-                <option value="Ascending">Pièces de A-Z</option>
-                <option value="Descending">Pièces de Z-A</option>
-            </select>
-            <div>
-                <a>&lsaquo;</a>
-                <span>-</span>
-                <a>&rsaquo;</a>
-            </div>
+            <div class="nav-bar">
+    <label>Trier par</label>
+    <select>
+        <option value="LastAdds" selected>Derniers Ajouts</option>
+        <option value="Ascending">Pièces de A-Z</option>
+        <option value="Descending">Pièces de Z-A</option>
+    </select>
+    <div>
+        <a>&lsaquo;</a>
+        <span>-</span>
+        <a>&rsaquo;</a>
+    </div>
+</div>
         </div>
         <div class="search-filter-container">
     <figure class="filters empty">
@@ -288,13 +290,18 @@
 </div>
 
 <script type="text/javascript">
-    window.addEventListener('resize', function() {
+
+    function syncNavAndList() {
         var container = document.querySelector('.search-result-container');
         var nav = document.querySelector('.page-nav');
         var list = container.querySelector('ul');
         
         nav.style.width = list.offsetWidth + 'px';
-    });
+    }
+
+    window.addEventListener('resize', syncNavAndList);
+
+    syncNavAndList();
 
     var rc= {
         previousResultPage: function() {
@@ -358,12 +365,21 @@
                         // update nav bar
                         self.pageIndex = data.page_index;
                         self.pageCount = data.page_count;
-                        self.navNode.querySelector('span:nth-of-type(1)').innerHTML = `${data.page_index} - ${data.page_count}`;
 
-                        if(self.pageIndex <= 1) self.navNode.querySelector('a:nth-of-type(1)').classList.add('disabled');
-                        else self.navNode.querySelector('a:nth-of-type(1)').classList.remove('disabled');
-                        if(self.pageIndex == self.pageCount) self.navNode.querySelector('a:nth-of-type(2)').classList.add('disabled');
-                        else self.navNode.querySelector('a:nth-of-type(2)').classList.remove('disabled');
+                        var navCountItem = self.navNode.querySelector('span:nth-of-type(1)');
+                        if(navCountItem) navCountItem.innerHTML = `${data.page_index} - ${data.page_count}`;
+
+                        var navPreviousLink = self.navNode.querySelector('a:nth-of-type(1)');
+                        if(navPreviousLink){
+                            if(self.pageIndex <= 1) navPreviousLink.classList.add('disabled');
+                            else navPreviousLink.classList.remove('disabled');
+                        }
+
+                        var navNextLink = self.navNode.querySelector('a:nth-of-type(2)');                        
+                        if(navNextLink) {
+                            if(self.pageIndex == self.pageCount) navNextLink.classList.add('disabled');
+                            else navNextLink.classList.remove('disabled');
+                        }
 
                         // append results
                         (data.results || []).forEach(function(resultInfo) {
@@ -398,14 +414,18 @@
                 this.pickResultProxy = function() { self.pickResultHandler.apply(self, [...arguments]); }
             }
 
-            this.navNode.querySelector('a:nth-of-type(1)').addEventListener('click', this.previousResultPageProxy);
-            this.navNode.querySelector('a:nth-of-type(2)').addEventListener('click', this.nextResultPageProxy);
+            var navPreviousLink = this.navNode.querySelector('a:nth-of-type(1)');
+            var navNextLink = this.navNode.querySelector('a:nth-of-type(2)');
+            if(navPreviousLink) navPreviousLink.addEventListener('click', this.previousResultPageProxy);
+            if(navNextLink) navNextLink.addEventListener('click', this.nextResultPageProxy);
         },
 
         unregisterHandlers: function() {
 
-            this.navNode.querySelector('a:nth-of-type(1)').removeEventListener('click', this.previousResultPageProxy);
-            this.navNode.querySelector('a:nth-of-type(2)').removeEventListener('click', this.nextResultPageProxy);
+            var navPreviousLink = this.navNode.querySelector('a:nth-of-type(1)');
+            var navNextLink = this.navNode.querySelector('a:nth-of-type(2)');
+            if(navPreviousLink) navPreviousLink.removeEventListener('click', this.previousResultPageProxy);
+            if(navNextLink) navNextLink.removeEventListener('click', this.nextResultPageProxy);
         },
 
         init: function() {
@@ -414,7 +434,7 @@
             this.sortType = 'LastAdds';
 
             this.node = document.querySelector('.search-result-container');
-            this.navNode = document.querySelector('.page-nav');
+            this.navNode = document.querySelector('.page-nav .nav-bar');
             this.listNode = this.node.querySelector('ul');
 
             // import/create the loading frame

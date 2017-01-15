@@ -48,3 +48,16 @@
   -moz-transform: rotate(@angle);
   transform: rotate(@angle);
 }
+
+.linear-gradient(@fromColor, @toColor) {
+  background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.8) 90%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.8) 90%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.8) 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.shadow(@xOffset : 0, @yOffset : 0, @blur : 0.8rem, @spread : 0, @color : #c0c0c0) {
+  -moz-box-shadow: @xOffset @yOffset @blur @spread @color;
+  -webkit-box-shadow: @xOffset @yOffset @blur @spread @color;
+  -o-box-shadow: @xOffset @yOffset @blur @spread @color;
+  box-shadow: @xOffset @yOffset @blur @spread @color;
+}

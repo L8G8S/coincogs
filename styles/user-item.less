@@ -1,20 +1,17 @@
-@import "media";
-@import "mixins";
-@import "theme";
-
 .user-item {
     .user-resume {
         display: inline-block;
 
         padding: 1rem;
         margin: 1rem;
-        margin-left: 0;
 
         line-height: 2rem;
 
         background-color: @theme-color06;
         border: 1px solid @theme-color03;
         .border-radius(0.4rem);
+
+        cursor: default;
 
         >* {
             vertical-align: middle;
@@ -25,7 +22,7 @@
         }
 
         .title {
-            font-size: 2rem;
+            font-size: 1.8rem;
         }
 
         .rating {
@@ -43,6 +40,7 @@
 
                 .border-radius(0.4rem);
 
+                font-size: 1.6rem;
                 text-align: center;
                 color: @theme-color00;
 
@@ -51,45 +49,58 @@
 
             .fa {
                 color: @theme-color21;
-                font-size: 1.8rem;
+                font-size: 1.7rem;
             }
         }
     }
 
-    .user-items-header {
-        display: flex;
-        flex-grow: 1;
+    .user-items-bar {
+        display: inline-block;
+        position: fixed;
+        margin-top: 4.7rem;
+        margin-right: 1rem;
+        min-width: 18rem;
 
-        >* {
-            vertical-align: middle;
-        }
-        
+        user-select: none;
+       
         .user-resume {
+            display: block;
+            margin-left: 0;
+            margin-right: 0;
+
             .rating {
-                margin-left: 5rem;
+                margin-top: 1rem;
             }
         }
 
+        > .title {
+            margin-top: 5rem;
+            display: block;
+
+            font-size: 1.7rem;
+        }
+
         ul {
-            display: inline-block;
-            flex-grow: 0.7;
+            display: block;
             text-align: center;
 
             margin: 0;
             padding: 0;
 
             li {
-                display: inline;
+                position: relative;
+                display: block;
 
                 .link {
-                    display: inline-block;
+                    display: block;
                     min-width: 10rem;
 
                     padding: 1rem;
-                    margin: 1rem;
+                    margin: 1rem 0;
 
                     text-align: center;
                     line-height: 3rem;
+                    font-size: 1.6rem;
 
                     background-color: @theme-color00;
                     border: 1px solid @theme-color03;
@@ -105,18 +116,61 @@
                         }
                     }
                 }
+
+                .user-resume {
+                    cursor: pointer;
+                    text-align: left;
+
+                    &:hover {
+                        border-color: @theme-color08;
+                        .shadow(@color: @theme-color04);
+
+                        color: @theme-color08;
+                    }
+                    
+                    &.selected {
+                        border-color: @theme-color08;
+                        background-color: @theme-color08;
+                        color: @theme-color00;
+
+                        .shadow();
+
+                        &:after {
+                            position: absolute;
+                            right: -1.8rem;
+                            top: 3.2rem;
+
+                            display: block;
+                            content: " ";
+                            width: 0;
+                            height: 0;
+
+                            border-left: 2rem solid @theme-color08;
+                            border-top: 2rem solid transparent;
+                            border-bottom: 2rem solid transparent;
+
+                            -o-animation: show-arrow-frame 250ms 1 alternate;
+                            -ms-animation: show-arrow-frame 250ms 1 alternate;
+                            -webkit-animation: show-arrow-frame 250ms 1 alternate;
+                            -moz-animation: show-arrow-frame 250ms 1 alternate;
+                            animation: show-arrow-frame 250ms 1 alternate;
+                        }
+                    }
+                }
             }
         }
 
     }
 
     .search-result-container {
-        margin: auto;
-        width: 100%;
-
         ul {
-            margin-top: 13rem;
-            max-width: none;
+            li {
+                figure {
+                    .grade {
+                        visibility: visible;
+                    }
+                }
+            }
         }
     }
 }

@@ -1,4 +1,149 @@
-<div class="search-result-container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="styles/index.css" />
+
+    <link rel="import" id="loading-template" href="templates/loading.html">
+
+    <script src="scripts/utils/ajax.es6.js"></script>
+    <script src="scripts/utils/format.es6.js"></script>
+</head>
+
+<body>
+<header class="page-header">
+    <div class="wrapper">
+        <a class="logo" title="coincogs" href="http://localhost:4000"><img src="" alt /></a>
+        <div class="top-nav">
+            <div class="input-group search">
+                <input type="text" placeholder="Type your reference, year, metal..." /><button title="Click to search"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </div>
+            <a class="toggle-button" href="marketplace.html">
+                <input type="checkbox" id="marketplace"/>
+                <label for="marketplace"><span>Marketplace</span><i class="fa fa-caret-down" aria-hidden="true"></i></label>
+            </a>
+            <div  class="toggle-button">
+                <input type="checkbox" id="community"/>
+                <label for="community"><span>Community</span><i class="fa fa-caret-down" aria-hidden="true"></i></i></label>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<div class="page-content user-item">
+    <div class="wrapper">
+        <div class="page-nav">
+            <div class="page-breadcrumb">
+                <a href="index.html">Acceuil</a><i class="fa fa-chevron-right" aria-hidden="true"></i><a href="item.html">1 Franc 1849 A</a><i class="fa fa-chevron-right" aria-hidden="true"></i><a>Ceux qui l'ont</a>
+            </div>
+            <div class="nav-bar">
+    <label>Trier par</label>
+    <select>
+        <option value="LastAdds" selected>Derniers Ajouts</option>
+        <option value="Ascending">Pièces de A-Z</option>
+        <option value="Descending">Pièces de Z-A</option>
+    </select>
+    <div>
+        <a>&lsaquo;</a>
+        <span>-</span>
+        <a>&rsaquo;</a>
+    </div>
+</div>
+        </div>
+        <div class="user-items-bar">
+    <ul>
+        <li>
+            <a class="user-resume selected">
+                <img class="logo" src="images/michu_avatar.png" alt="" />
+                <span class="title">@ michu</span>
+                <div class="rating">
+                    <span>5.0</span>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+            </a>    
+        </li>
+        <li>
+            <a class="user-resume">
+                <img class="logo" src="images/pika_avatar.png" alt="" />
+                <span class="title">@ pika</span>
+                <div class="rating p95">
+                    <span>4.9</span>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+            </a>  
+        </li>
+        <li>
+            <a class="user-resume">
+                <img class="logo" src="images/mario_avatar.png" alt="" />
+                <span class="title">@ mario</span>
+                <div class="rating p90">
+                    <span>4.8</span>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+            </a>  
+        </li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+
+    var pib = {
+        clickResumeHandler : function(evt) {
+            Array.from(this.node.querySelectorAll('.user-resume')).forEach(function(ur) {
+                ur.classList.remove('selected');
+            });
+
+            var selectedResume = evt.target || evc.srcElement;
+            while(selectedResume != null && !selectedResume.classList.contains('user-resume')) selectedResume = selectedResume.parentNode;
+
+            if(selectedResume){
+                selectedResume.classList.add('selected');
+
+                // TODO: remove following code
+                if(rc) rc.gatherResults('http://localhost:8080/search/results_1.json');
+            }
+        },
+
+        registerHandlers: function() {
+            if(!this.clickResumeProxy) {
+                var self = this;
+                this.clickResumeProxy = function() { self.clickResumeHandler.apply(self, [...arguments]); }
+            }
+
+            Array.from(this.node.querySelectorAll('.user-resume')).forEach(function(ur) {
+                ur.addEventListener('click', this.clickResumeProxy);
+            }, this);
+        },
+
+        unregisterHandlers: function() {
+            Array.from(this.node.querySelectorAll('.user-resume')).forEach(function(ur) {
+                ur.removeEventListener('click', this.clickResumeProxy);
+            }, this);
+        },
+
+        init: function() {
+            this.node = document.querySelector('.user-items-bar');
+            this.registerHandlers();
+        }
+    };
+
+    pib.init();
+</script>
+        <div class="search-result-container">
     <ul></ul>
 </div>
 
@@ -165,3 +310,21 @@
 
     rc.init();
 </script>
+    </div>
+</div>
+
+<footer class="page-footer"></footer>
+<script type="text/javascript">
+    function syncWrappersLayout() {
+        var header = document.querySelector('.page-header .wrapper');
+        var content = document.querySelector('.page-content .wrapper');
+
+        if(content && header) header.style.width = content.offsetWidth + 'px';
+    }
+
+    window.addEventListener('resize', syncWrappersLayout);
+
+    syncWrappersLayout();
+</script>
+</body>
+</html>

@@ -1,4 +1,57 @@
-.search-filter-container {
+.marketplace {
+    .page-nav {
+        .tab-bar {
+            ul {
+                position: absolute;
+                bottom: -1px;
+
+                display: inline-block;
+                margin: 0;
+                margin-left: 20rem;
+
+                padding: 0;
+                list-style: none;
+
+                line-height: 2.5rem;
+
+                li {
+                    background-color: @theme-color00;
+                    
+                    display: inline-block;
+                    padding: 0.5rem 0.8rem;
+                    padding-right: 0;
+                    min-width: 9rem;
+
+                    cursor: pointer;
+                    
+                    a {
+                        display: inline-block;
+                        width: 100%;
+                        padding-right: 1rem;
+                        border-right: 1px solid @theme-color03;
+
+                        text-align: center;
+                    }
+
+                    &.selected {
+                        border: 1px solid @theme-color03;
+                        border-bottom-color: @theme-color00;
+
+                        color: @theme-color01;
+                        font-weight: bold;
+                        text-decoration: none;
+
+                        a {
+                            border-right: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.marketplace-filter-container {
     cursor: default;
     overflow: hidden;
     overflow-y: auto;
@@ -200,7 +253,7 @@
     }
 }
 
-.search-result-container {
+.marketplace-result-container {
     position: relative;
     cursor: default;
     overflow: hidden;
@@ -291,21 +344,21 @@
 
 .page-content {
 
-    .search-filter-container, .search-result-container {
+    .marketplace-filter-container, .marketplace-result-container {
         display: inline-block;
     }
 
-    .search-filter-container {
+    .marketplace-filter-container {
        position: fixed;
        margin-top: 7rem;
     }
 
-    .search-result-container {
+    .marketplace-result-container {
         margin-left: 20rem;
         text-align: center;
     }
 
-    &.index {
+    &.marketplace {
         .page-nav {
             position: absolute;
             max-width: @page-width;

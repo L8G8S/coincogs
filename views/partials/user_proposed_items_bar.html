@@ -1,0 +1,91 @@
+<div class="user-items-bar">
+    <ul>
+        <li>
+            <a class="user-resume selected">
+                <img class="logo" src="images/michu_avatar.png" alt="" />
+                <span class="title">@ michu</span>
+                <div class="rating">
+                    <span>5.0</span>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+            </a>    
+        </li>
+        <li>
+            <a class="user-resume">
+                <img class="logo" src="images/pika_avatar.png" alt="" />
+                <span class="title">@ pika</span>
+                <div class="rating p95">
+                    <span>4.9</span>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+            </a>  
+        </li>
+        <li>
+            <a class="user-resume">
+                <img class="logo" src="images/mario_avatar.png" alt="" />
+                <span class="title">@ mario</span>
+                <div class="rating p90">
+                    <span>4.8</span>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+            </a>  
+        </li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+
+    var pib = {
+        clickResumeHandler : function(evt) {
+            Array.from(this.node.querySelectorAll('.user-resume')).forEach(function(ur) {
+                ur.classList.remove('selected');
+            });
+
+            var selectedResume = evt.target || evc.srcElement;
+            while(selectedResume != null && !selectedResume.classList.contains('user-resume')) selectedResume = selectedResume.parentNode;
+
+            if(selectedResume){
+                selectedResume.classList.add('selected');
+
+                // TODO: remove following code
+                if(rc) rc.gatherResults('http://localhost:8080/search/results_1.json');
+            }
+        },
+
+        registerHandlers: function() {
+            if(!this.clickResumeProxy) {
+                var self = this;
+                this.clickResumeProxy = function() { self.clickResumeHandler.apply(self, [...arguments]); }
+            }
+
+            Array.from(this.node.querySelectorAll('.user-resume')).forEach(function(ur) {
+                ur.addEventListener('click', this.clickResumeProxy);
+            }, this);
+        },
+
+        unregisterHandlers: function() {
+            Array.from(this.node.querySelectorAll('.user-resume')).forEach(function(ur) {
+                ur.removeEventListener('click', this.clickResumeProxy);
+            }, this);
+        },
+
+        init: function() {
+            this.node = document.querySelector('.user-items-bar');
+            this.registerHandlers();
+        }
+    };
+
+    pib.init();
+</script>

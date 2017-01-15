@@ -1,0 +1,27 @@
+.edit-bar {
+    position: absolute;
+    top:0;
+    right:0;
+
+    button {
+        cursor: pointer;
+        width: 3.5rem;
+        height: 3.5rem;
+
+        background-color: transparent;
+        border-color: transparent;
+
+        text-align: center;
+
+        opacity: 0.5;
+
+        .transition(opacity, 250ms, linear);
+
+        &:hover {
+            opacity: 1;
+
+            border-color: @theme-color02;
+            background-color: @theme-color04;
+        }
+    }
+}

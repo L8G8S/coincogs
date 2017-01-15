@@ -2,6 +2,10 @@
 @import "mixins";
 @import "theme";
 
+a {
+    text-decoration: none;
+}
+
 input {
     padding: 0.4rem 0.6rem;
     padding-bottom: 0.5rem;
@@ -14,6 +18,10 @@ input {
     border: 1px solid @theme-color02;
     .border-radius(0.4rem);
     .placeholder-color(@theme-color02);
+}
+
+textarea {
+    border: 1px solid @theme-color02;
 }
 
 label {
@@ -40,7 +48,32 @@ button {
     border: 1px solid @theme-color02;
     .border-radius(0.4rem);
 
-    cursor: pointer;        
+    cursor: pointer;
+
+    &:hover {
+        border-color: @theme-color08;
+    }
+}
+
+.button {
+    display: inline-block;
+
+    padding: 0.5rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0.6rem;
+
+    color: @theme-color01;
+
+    border: 1px solid @theme-color02;
+    .border-radius(0.4rem);
+
+    background-color: @theme-color03;
+
+    cursor: pointer;
+
+    &:hover {
+        border-color: @theme-color08;
+    }
 }
 
 .title {
@@ -255,7 +288,7 @@ button {
     position: relative;
     cursor: default;
 
-    label {
+    > label {
         display: block;
         width: 100%;
 
@@ -295,7 +328,7 @@ button {
         }
     }
 
-    input[type="checkbox"] {
+    > input[type="checkbox"] {
         display: none;
         visibility: hidden;
     

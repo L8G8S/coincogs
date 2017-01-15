@@ -57,6 +57,37 @@ function handleGetRequest(request, response) {
             }
         }
 
+        else /* marketplace filters */
+        if(request.url.indexOf('/marketplace/filters') == 0) {
+            var mockFile = request.url.replace('/marketplace/', './data/mock_marketplace_');
+            if(fs.existsSync(mockFile)) {
+                fs.readFile(mockFile, function (err, data) {
+                    response.setHeader('Content-Type', 'application/json');
+                    response.write(data);
+                    response.end();
+                });
+            }
+            else {
+                response.statusCode = 404;
+                response.end();
+            }
+        }
+        /* marketplace results*/
+        else if(request.url.indexOf('/marketplace/results') == 0) {
+            var mockFile = request.url.replace('/search/', './data/mock_marketplace_');
+            if(fs.existsSync(mockFile)) {
+                fs.readFile(mockFile, function (err, data) {
+                    response.setHeader('Content-Type', 'application/json');
+                    response.write(data);
+                    response.end();
+                });
+            }
+            else {
+                response.statusCode = 404;
+                response.end();
+            }
+        }
+
         return true;
     }
 

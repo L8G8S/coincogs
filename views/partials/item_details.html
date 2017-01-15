@@ -8,48 +8,48 @@
             </figure>
             <figure style="transform: translateX(0%);">
                 <figcaption><span class="title">1 Franc Céres 1849 A</span></figcaption>
-                <img src="images/1849a_1_franc_avers.png" alt=""><img src="images/1849a_1_franc_revers.png" alt="">
+                <div>
+                    <img src="images/1849a_1_franc_avers.png" alt=""><img src="images/1849a_1_franc_revers.png" alt="">
+                    <div class="user-info">collection <a class="link" href="user_public_items.html">@michu</a></div>
+                </v>
             </figure>
             <figure style="transform: translateX(100%);">
                 <figcaption><span class="title">1 Franc Céres 1849 A</span></figcaption>
-                <img src="images/1866k_1_franc_avers.png" alt=""><img src="images/1866k_1_franc_revers.png" alt="">
+                <div>
+                    <img src="images/1849a_1_franc_avers_2.png" alt=""><img src="images/1849a_1_franc_revers_2.png" alt="">
+                    <div class="user-info">collection <a class="link" href="user_public_items.html">@pika</a></div>
+                </div>
             </figure>
             <figure style="transform: translateX(200%);">
                 <figcaption><span class="title">1 Franc Céres 1849 A</span></figcaption>
-                <img src="images/1898_2_franc_avers.png" alt=""><img src="images/1898_2_franc_revers.png" alt="">
+                <div>
+                    <img src="images/1898_2_franc_avers.png" alt=""><img src="images/1898_2_franc_revers.png" alt="">
+                    <div class="user-info">collection <a class="link" href="user_public_items.html">@pika</a></div>
+                </div>
             </figure>
         </div><!--
      --><button class="next" title="Pièce suivante"><i class="fa fa-caret-right" aria-hidden="true"></i></button>
-        
-        <div class="community-info">
-            <a class="link have"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22 <span>l'ont</span></a>
-            <a class="link want"><i class="fa fa-heart" aria-hidden="true"></i> 5 <span>la veulent</span></a>
-        </div>
     </div>
 
     <table>
         <thead>
-            <tr><td colspan="4"><h1 class="title">1 Franc Céres 1849 A</h1></td></tr>
-            <tr class="info"><td colspan="4">Ajouté le <span class="date">01/01/2017</span>, par <span><a class="link" href="user_public_items.html">michu</a></td></tr>
+            <tr><th colspan="4"><span class="title">1 Franc Céres 1849 A</span></th></tr>
         </thead>
         <tbody>
             <tr>
-                <td class="title">Catégorie</td><td colspan="3"><span class="tag">Moderne<i class="fa fa-times" aria-hidden="true"></i></span></td>
+                <td class="title">Catégorie</td><td colspan="3">Moderne</td>
             </tr>
             <tr>
-                <td class="title">Métal</td><td colspan="3"><span class="tag">Argent 900‰<i class="fa fa-times" aria-hidden="true"></i></span></td>
+                <td class="title">Métal</td><td>Argent 900‰</td>
             </tr>
             <tr>
-                <td class="title">Etat</td><td colspan="3"><span class="tag">SUP<i class="fa fa-times" aria-hidden="true"></i></span></td>
+                <td class="title">Atelier</td><td colspan="3">Paris</span></td>
             </tr>
             <tr>
-                <td class="title">Gradé</td><td colspan="3"><span class="tag">PCGS<i class="fa fa-times" aria-hidden="true"></i></span></td>
+                <td class="title">Particularité</td><td colspan="3">--</td>
             </tr>
             <tr>
-                <td class="title">Particularité</td><td colspan="3">Quod opera consulta cogitabatur astute, ut hoc insidiarum genere Galli periret avunculus, ne eum ut praepotens acueret in fiduciam exitiosa coeptantem. verum navata est opera diligens hocque dilato Eusebius praepositus cubiculi missus est Cabillona aurum secum perferens, quo per turbulentos seditionum concitores occultius distributo et tumor consenuit militum et salus est in tuto locata praefecti. deinde cibo abunde perlato castra die praedicto sunt mota.</td>
-            </tr>
-            <tr>
-                <td class="title">Référence(s)</td><td colspan="3"><a class="link ref tag">F.211/1<i class="fa fa-times" aria-hidden="true"></i></a></td>
+                <td class="title">Référence(s)</td><td colspan="3"><a class="link ref tag">F.211/1</a>&nbsp;,&nbsp;&nbsp;<a class="link ref tag">G.457</a></td>
             </tr>
         </tbody>
     </table>
@@ -59,14 +59,14 @@
     var pc = {
         previousPictureHandle: function() {
             Array.from(this.sliderNode.querySelectorAll('figure')).forEach(function(fig) {
-                var tv = parseInt(fig.style.transform.replace('translateX(', '')) - 100;
+                var tv = parseInt(fig.style.transform.replace('translateX(', '')) + 100;
                 fig.style.transform = `translateX(${tv}%)`;
             });
         },
 
         nextPictureHandle: function() {
             Array.from(this.sliderNode.querySelectorAll('figure')).forEach(function(fig) {
-                var tv = parseInt(fig.style.transform.replace('translateX(', '')) + 100;
+                var tv = parseInt(fig.style.transform.replace('translateX(', '')) - 100;
                 fig.style.transform = `translateX(${tv}%)`;
             });
         },

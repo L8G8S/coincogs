@@ -8,21 +8,35 @@
 <div class="page-content item">
     <div class="wrapper">
         <div class="page-nav">
-            <a>Acceuil</a><i class="fa fa-chevron-right" aria-hidden="true"></i><a>1 Franc 1849 A</a>
+            <div class="page-breadcrumb">
+                <a href="index.html">Acceuil</a><i class="fa fa-chevron-right" aria-hidden="true"></i><a>1 Franc 1849 A</a>
+            </div>
         </div>
-        @@include('./partials/item_details.html')
-        @@include('./partials/item_serie_information.html')
-        @@include('./partials/item_serie_stats.html')
+        <div class="two-col-layout">
+            <div>
+                @@include('./partials/item_details.html')
+                @@include('./partials/item_serie_information.html')
+                @@include('./partials/item_serie_stats.html')
+                @@include('./partials/item_serie_comments.html')
+            </div>
+            <div>
+                @@include('./partials/item_metadata.html')
+            </div>
+        </div>
     </div>
 </div>
 
 <script type="text/javascript">
-    window.addEventListener('resize', function() {
+    function syncNavAndContent() {
         var nav = document.querySelector('.page-nav');
-        var details = document.querySelector('.item-details');
+        var details = document.querySelector('.two-col-layout');
         
         nav.style.width = details.offsetWidth + 'px';
-    });
+    }
+
+    window.addEventListener('resize', syncNavAndContent);
+
+    syncNavAndContent();
 </script>
 
 @@include('./partials/page_footer.html')

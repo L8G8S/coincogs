@@ -1,23 +1,10 @@
-<div class="search-result-container">
+<div class="marketplace-result-container">
     <ul></ul>
 </div>
 
 <script type="text/javascript">
-
-    function syncNavAndList() {
-        var container = document.querySelector('.search-result-container');
-        var containerStyle = container.currentStyle || window.getComputedStyle(container);
-        
-        var nav = document.querySelector('.page-nav');
-
-        nav.style.width = (container.offsetWidth + parseFloat(containerStyle.marginLeft) + parseFloat(containerStyle.marginRight)) + 'px';
-    }
-
-    window.addEventListener('resize', syncNavAndList);
-
-    syncNavAndList();
-
-    var rc= {
+    /*
+    var mrc= {
         previousResultPage: function() {
             this.pageIndex--;
             if(this.pageIndex == 0) this.pageIndex = 1;
@@ -163,5 +150,6 @@
         }
     };
 
-    rc.init();
+    mrc.init();
+    */
 </script>

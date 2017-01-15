@@ -1,0 +1,29 @@
+[{
+    "title": "Catégories",
+    "more_label": "",
+    "filters": [
+        {"title": "Moderne", "count": 55457}
+    ]
+},
+{
+    "title": "Métal",
+    "more_label": "Plus de métaux",
+    "filters": [
+        {"title": "Or", "count": 8742},
+        {"title": "Argent", "count": 25987},
+        {"title": "Aluminium", "count": 7800},
+        {"title": "Bronze-Aluminium", "count": 6589}
+    ]
+},
+{
+    "title": "Atelier de Frappe",
+    "more_label": "Plus d'ateliers",
+    "filters": [
+        {"title": "Paris", "count": 0},
+        {"title": "Bordeaux", "count": 0},
+        {"title": "Beaumont-Le-Roger", "count":0},
+        {"title": "Castelsarasin", "count": 0}, 
+        {"title": "Limoges", "count": 0}, 
+        {"title": "Lille", "count": 0}
+    ]
+}]

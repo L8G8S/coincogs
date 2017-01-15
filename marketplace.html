@@ -32,15 +32,24 @@
     </div>
 </header>
 
-<div class="page-content index">
+<div class="page-content marketplace">
     <div class="wrapper">
         <div class="page-nav">
+            <div class="tab-bar">
+    <ul>
+        <li class="link selected"><a>Toutes les pièces</a></li>
+        <li><a class="link">Pièces souhaitées</a></li>
+        <li><a class="link">Achats</a></li>
+        <li><a class="link">Panier</a></li>
+    </ul>
+</div>
             <div class="nav-bar">
     <label>Trier par</label>
     <select>
-        <option value="LastAdds" selected>Derniers Ajouts</option>
-        <option value="Ascending">Pièces de A-Z</option>
-        <option value="Descending">Pièces de Z-A</option>
+        <option value="RecentDescending" selected>Mise en vente la plus récente</option>
+        <option value="RecentAscending">Mise en vente la plus ancienne</option>
+        <option value="FaceValueAscending">Pièces de A-Z</option>
+        <option value="FaceValueDescending">Pièces de Z-A</option>
     </select>
     <div>
         <a>&lsaquo;</a>
@@ -49,7 +58,7 @@
     </div>
 </div>
         </div>
-        <div class="search-filter-container">
+        <div class="marketplace-filter-container">
     <figure class="filters empty">
         <figcaption>Filtres</figcaption>
         <ul></ul>
@@ -58,7 +67,7 @@
 
 
 <script type="text/javascript">
-    var fc = {
+    var mfc = {
 
         raiseFilterSelected : function(filterText) {
             if(!filterText) return;
@@ -248,63 +257,50 @@
         },
 
         init: function() {
-            this.node = document.querySelector('.search-filter-container');
+            this.node = document.querySelector('.marketplace-filter-container');
             this.filterNode = this.node.querySelector('.filters ul');
             this.filters = [];
 
-            this.gatherFilters('http://localhost:8080/search/filters.json');
+            this.gatherFilters('http://localhost:8080/marketplace/filters.json');
         }
     };
 
-    fc.init();
+    mfc.init();
 
 
     // for testing purpose only
-    fc.node.addEventListener('filterSelected', function(evt) {
-        fc.gatherFilters('http://localhost:8080/search/filters_' + fc.filters.join('_').toLowerCase() + '.json');
+    mfc.node.addEventListener('filterSelected', function(evt) {
+        mfc.gatherFilters('http://localhost:8080/marketplace/filters_' + mfc.filters.join('_').toLowerCase() + '.json');
 
-        if(rc) {
-            rc.gatherResults('http://localhost:8080/search/results_' + fc.filters.join('_').toLowerCase() + '.json');
+        if(mrc) {
+            mrc.gatherResults('http://localhost:8080/marketplace/results_' + mfc.filters.join('_').toLowerCase() + '.json');
         }
     });
-    fc.node.addEventListener('filterRemoved', function(evt) {
-        if(fc.filters.length > 0){
-            fc.gatherFilters('http://localhost:8080/search/filters_' + fc.filters.join('_').toLowerCase() + '.json');
+    mfc.node.addEventListener('filterRemoved', function(evt) {
+        if(mfc.filters.length > 0){
+            mfc.gatherFilters('http://localhost:8080/marketplace/filters_' + mfc.filters.join('_').toLowerCase() + '.json');
 
-            if(rc) {
-                rc.gatherResults('http://localhost:8080/search/results_' + fc.filters.join('_').toLowerCase() + '.json');
+            if(mrc) {
+                mrc.gatherResults('http://localhost:8080/marketplace/results_' + mfc.filters.join('_').toLowerCase() + '.json');
             }
         }
         else {
-            fc.gatherFilters('http://localhost:8080/search/filters.json');
+            mfc.gatherFilters('http://localhost:8080/marketplace/filters.json');
 
-                        if(rc) {
-                rc.gatherResults('http://localhost:8080/search/results_1.json');
+            if(mrc) {
+                mrc.gatherResults('http://localhost:8080/marketplace/results_1.json');
             }
         }
     });
     
 </script>
-        <div class="search-result-container">
+        <div class="marketplace-result-container">
     <ul></ul>
 </div>
 
 <script type="text/javascript">
-
-    function syncNavAndList() {
-        var container = document.querySelector('.search-result-container');
-        var containerStyle = container.currentStyle || window.getComputedStyle(container);
-        
-        var nav = document.querySelector('.page-nav');
-
-        nav.style.width = (container.offsetWidth + parseFloat(containerStyle.marginLeft) + parseFloat(containerStyle.marginRight)) + 'px';
-    }
-
-    window.addEventListener('resize', syncNavAndList);
-
-    syncNavAndList();
-
-    var rc= {
+    /*
+    var mrc= {
         previousResultPage: function() {
             this.pageIndex--;
             if(this.pageIndex == 0) this.pageIndex = 1;
@@ -450,10 +446,26 @@
         }
     };
 
-    rc.init();
+    mrc.init();
+    */
 </script>
     </div>
 </div>
+
+<script type="text/javascript">
+    function syncNavAndList() {
+        var container = document.querySelector('.marketplace-result-container');
+        var containerStyle = container.currentStyle || window.getComputedStyle(container);
+        
+        var nav = document.querySelector('.page-nav');
+
+        nav.style.width = (container.offsetWidth + parseFloat(containerStyle.marginLeft) + parseFloat(containerStyle.marginRight)) + 'px';
+    }
+
+    window.addEventListener('resize', syncNavAndList);
+
+    syncNavAndList();
+</script>
 
 <footer class="page-footer"></footer>
 <script type="text/javascript">

@@ -20,10 +20,10 @@
             <div class="input-group search">
                 <input type="text" placeholder="Type your reference, year, metal..." /><button title="Click to search"><i class="fa fa-search" aria-hidden="true"></i></button>
             </div>
-            <div class="toggle-button">
+            <a class="toggle-button" href="marketplace.html">
                 <input type="checkbox" id="marketplace"/>
                 <label for="marketplace"><span>Marketplace</span><i class="fa fa-caret-down" aria-hidden="true"></i></label>
-            </div>
+            </a>
             <div  class="toggle-button">
                 <input type="checkbox" id="community"/>
                 <label for="community"><span>Community</span><i class="fa fa-caret-down" aria-hidden="true"></i></i></label>
@@ -35,25 +35,9 @@
 <div class="page-content user-item">
     <div class="wrapper">
         <div class="page-nav">
-            <div class="user-items-header">
-    <div class="user-resume">
-        <img class="logo" src="images/michu_avatar.png" alt="" />
-        <span class="title">@ michu</span>
-        <div class="rating">
-            <span>5.0</span>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-        </div>
-    </div>
-
-    <ul>
-        <li><a class="link selected">Modernes</a></li>
-        <li><a class="link">Royales</a></li>
-    </ul>
-</div>
+            <div class="page-breadcrumb">
+                <a href="index.html">Acceuil</a><i class="fa fa-chevron-right" aria-hidden="true"></i><a href="item.html">1 Franc 1849 A</a><i class="fa fa-chevron-right" aria-hidden="true"></i><a>Pièce(s) de @michu</a>
+            </div>
             <div class="nav-bar">
     <label>Trier par</label>
     <select>
@@ -68,6 +52,26 @@
     </div>
 </div>
         </div>
+        <div class="user-items-bar">
+    <div class="user-resume">
+        <img class="logo" src="images/michu_avatar.png" alt="" />
+        <span class="title">@ michu</span>
+        <div class="rating">
+            <span>5.0</span>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+        </div>
+    </div>
+
+    <span class="title">Collection(s)</span>
+    <ul>
+        <li><a class="link selected">Modernes</a></li>
+        <li><a class="link">Royales</a></li>
+    </ul>
+</div>
         <div class="search-result-container">
     <ul></ul>
 </div>
@@ -76,10 +80,11 @@
 
     function syncNavAndList() {
         var container = document.querySelector('.search-result-container');
-        var nav = document.querySelector('.page-nav');
-        var list = container.querySelector('ul');
+        var containerStyle = container.currentStyle || window.getComputedStyle(container);
         
-        nav.style.width = list.offsetWidth + 'px';
+        var nav = document.querySelector('.page-nav');
+
+        nav.style.width = (container.offsetWidth + parseFloat(containerStyle.marginLeft) + parseFloat(containerStyle.marginRight)) + 'px';
     }
 
     window.addEventListener('resize', syncNavAndList);
@@ -170,7 +175,7 @@
                             var engraver = `${resultInfo.engraver}`.trim();
 
                             var newResultNode = document.createElement('li');
-                            newResultNode.innerHTML = `<a title="${title}"><figure><figcaption><span class="title">${title}</span><span class="engraver">${engraver}</span></figcaption><img src='${resultInfo.obverse}' alt/><img src='${resultInfo.reverse}' alt/></figure></a>`;
+                            newResultNode.innerHTML = `<a title="${title}"><figure><figcaption><span class="title">${title}</span><span class="engraver">${engraver}</span></figcaption><img src='${resultInfo.obverse}' alt/><img src='${resultInfo.reverse}' alt/><span class='grade'>${resultInfo.grade}</span></figure></a>`;
                             newResultNode.itemInfo = resultInfo;
 
                             self.listNode.appendChild(newResultNode);

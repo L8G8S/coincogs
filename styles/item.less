@@ -379,17 +379,28 @@
         thead {
             tr:first-child {
                 th {
+                    position: relative;
                     text-align: center;
                     padding: 0.5rem;
                     color: @theme-color05;
                     
-                    /*
                     &:last-child {
-                        background-image: url('../images/accolade_H9.svg.png');
-                        background-repeat: no-repeat;
-                        background-size: 100% 80%;
+                        &:before {
+                            position: absolute;
+                            left: 1rem;
+                            content: url('../images/long_arrow_left.png');
+                            height: 2rem;
+                            overflow: hidden;
+                        }
+
+                        &:after {
+                            position: absolute;
+                            right: 1rem;
+                            content: url('../images/long_arrow_right.png');
+                            height: 2rem;
+                            overflow: hidden;
+                        }
                     }
-                    */
                 }
             }
 
@@ -476,8 +487,6 @@
               height: 8rem;
               opacity: 0.8;
 
-              .transition(opacity, 250ms, linear);
-
               &:active, &:focus, &:hover {
                 opacity: 1;
               }
@@ -487,6 +496,7 @@
 }
 
 .item-metadata {
+    position: fixed;
     display: block;
     height: 100%;
 

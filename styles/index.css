@@ -3710,16 +3710,24 @@ button:hover {
   border-right: 1px solid #165dd0;
 }
 .item-serie-stats table thead tr:first-child th {
+  position: relative;
   text-align: center;
   padding: 0.5rem;
   color: #808080;
-  /*
-                    &:last-child {
-                        background-image: url('../images/accolade_H9.svg.png');
-                        background-repeat: no-repeat;
-                        background-size: 100% 80%;
-                    }
-                    */
+}
+.item-serie-stats table thead tr:first-child th:last-child:before {
+  position: absolute;
+  left: 1rem;
+  content: url('../images/long_arrow_left.png');
+  height: 2rem;
+  overflow: hidden;
+}
+.item-serie-stats table thead tr:first-child th:last-child:after {
+  position: absolute;
+  right: 1rem;
+  content: url('../images/long_arrow_right.png');
+  height: 2rem;
+  overflow: hidden;
 }
 .item-serie-stats table thead tr:not(:first-child) th {
   background-color: #508ced;
@@ -3775,10 +3783,6 @@ button:hover {
   margin-top: 3.1rem;
   height: 8rem;
   opacity: 0.8;
-  -webkit-transition: opacity 250ms linear;
-  -moz-transition: opacity 250ms linear;
-  -o-transition: opacity 250ms linear;
-  transition: opacity 250ms linear;
 }
 .item-serie-comment table tbody button:active,
 .item-serie-comment table tbody button:focus,
@@ -3786,6 +3790,7 @@ button:hover {
   opacity: 1;
 }
 .item-metadata {
+  position: fixed;
   display: block;
   height: 100%;
   border-left: 1px dashed #f0f0f0;

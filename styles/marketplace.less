@@ -340,6 +340,44 @@
             min-height: 50rem;
         }
     }
+
+    table {
+        display: block;
+        border-collapse: collapse;
+
+        width: 100%;
+        max-width: 99rem;
+
+        margin: 0;
+        margin-top: 6rem;
+        padding: 0;
+
+        tr {
+            display: block;
+        }
+        
+        thead {
+            display: block;
+            font-size: 1.7rem;
+
+            th {
+                padding: 0.5rem;
+                
+                &:first-child, &:last-child {
+                    visibility: hidden;
+                }
+            }
+        }
+
+        tbody {
+            display: block;
+
+            &:empty {
+                min-width: 99rem;
+                min-height: 50rem;
+            }
+        }
+    }
 }
 
 .page-content {

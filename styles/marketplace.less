@@ -15,7 +15,7 @@
                 line-height: 2.5rem;
 
                 li {
-                    background-color: @theme-color00;
+                    background-color: fade(@theme-color00, 60%);
                     
                     display: inline-block;
                     padding: 0.5rem 0.8rem;
@@ -254,128 +254,240 @@
 }
 
 .marketplace-result-container {
+    display: block;
     position: relative;
     cursor: default;
     overflow: hidden;
+    overflow-y: auto;
     
+    width: 100%;
+    max-width: 99rem;
+    height: 100%;
+
     user-select: none;
 
-    ul {
-        display: block;
-
+    .result-header {
+        position: fixed;
         width: 100%;
         max-width: 99rem;
 
+        padding-top: 2rem;
+
+        display: flex;
+        flex-direction: row;
+
+        background-color: fade(@theme-color00, 85%);
+
+        z-index: 2;
+
+        >* {
+            position: relative;
+            background-color: fade(@theme-color04, 60%);
+            min-width: 7rem;
+            padding: 0.5rem;
+
+            text-decoration: none;
+
+            &.sort {
+                cursor: pointer;
+
+                .fa {
+                    position: absolute;
+                    right: 0.5rem;
+
+                    color: @theme-color05;
+
+                    .transition(transform, 500ms, linear);
+                }
+
+                &.desc {
+                    .fa {
+                        .rotate(-180deg);
+                    }
+                }
+
+                &:hover {
+                    .fa {
+                        color: initial;
+                    }
+                }
+            }
+
+            &:nth-child(1) {
+                flex: 0 0 25rem;
+            }
+            
+            &:nth-child(2) {
+                flex-grow: 1;
+            }
+
+            &:nth-child(3) {
+                width: 8rem;
+            }
+
+            &:nth-child(5) {
+                width: 18rem;
+            }
+
+            &:last-child {
+                width: 8rem;
+            }
+        }
+    }
+
+    .result-list {
         margin: 0;
-        margin-top: 6rem;
+        margin-top: 5rem;
         padding: 0;
+        list-style: none;
+        width: 100%;
+
+        font-size: 1.6rem;
+
+        z-index: 1;
 
         li {
+            display: flex;
+            flex-direction: row;
             position: relative;
-            display: inline-block;
-            vertical-align: top;
 
-            padding: 1rem;
-            .border-radius(0.4rem);
+            border-bottom: 1px solid @theme-color02;
 
-            cursor: pointer;
+            >* {
+                vertical-align: middle;
+                min-width: 7rem;
+                padding: 0.5rem;
 
-            figure {
-                display: block;
-                margin: 0;
+                span {
+                    color: @theme-color05;
+                    padding-right: 0.5rem;
 
-                figcaption {
-                    text-align: center;
+                    &:nth-of-type(2n) {
+                        color: @theme-color01;
+                        padding-right: 2rem;
+                    }
+
+                    &:last-child {
+                        padding-right: 0;
+                    }
+                }
+
+                .year, .grade {
+                    color: @theme-color01;
+                }
+
+                .grade {
+                    background-color: @theme-color21;
+                    .border-radius(0.4rem);
+                }
+
+                .price {
+                    color: @theme-color23;
+                    font-weight: bold;
+                }
+
+                .seller {
+                    display: inline-block;
+                    font-size: 1.7rem;
+                    font-weight: bold;
                     margin-bottom: 1rem;
-                    min-height: 3.7rem;
+                }
 
-                    span {
-                        display: block;
+                .rating {
+                    display: block;
 
-                        &.title {
-                            font-weight: bold;
-                        }
+                    >* {
+                        vertical-align: middle;
+                    }
 
-                        &.engraver {
-                            color: @theme-color05;
-                            font-size: smaller;
+                    .fa {
+                        color: @theme-color21;
+                        font-size: 1.5rem;
+                    }
+
+                    a {
+                        color: @theme-color05;
+                        font-size: 1.5rem;
+                        margin-left: 0.5rem;
+
+                        &:hover {
+                            color: @theme-color09;
                         }
                     }
                 }
 
-                img {
-                    width: 15rem;
+                .buy {
+                    display: block;
+                    width: 7rem;
+                    position: absolute;
+                    bottom: 4rem;
+
+                    background-color: @theme-color31;
+
+                    text-align: center;
+                    color: @theme-color00;
+                    font-weight: normal;
+                    text-shadow: 0px 0px 4px rgba(80, 80, 80, 1);
+
+                    &:hover {
+                        background-color: @theme-color32;
+                        border-color: @theme-color30;
+                    }
                 }
 
-                .grade {
-                    position: absolute;
-                    right: 0.5rem;
-                    bottom: 0.5rem;
+                &:nth-child(1) {
+                    flex: 0 0 25rem;
+                }
 
-                    padding: 0.3rem 0.5rem;
-                    background-color: @theme-color21;
-                    .border-radius(0.4rem);
+                &:nth-child(2) {
+                    flex-grow: 1;
 
-                    font-size: 1.5rem;
+                    > * {
+                        position: relative;
+                        line-height: 2.1rem;
+                        font-size: 1.5rem;
 
-                    visibility: hidden;
+                        &.title {
+                            display: inline-block;
+                            font-size: 1.7rem;
+                            margin-bottom: 1rem;
+                        }
+                    }
+                }
+
+                &:nth-child(3) {
+                    width: 8rem;
+                }
+
+                &:nth-child(5) {
+                    width: 18rem;
+                }
+
+                &:last-child {
+                    width: 8rem;
+                }
+
+                &:nth-child(3), &:nth-child(4), &:nth-child(6) {
+                    span {
+                        display: inline-block;
+                        padding: 0.3rem 0.5rem;
+
+                        &:nth-child(2) {
+                            padding-top: 0;
+                            font-size: 1.5rem;
+                            color: @theme-color05;
+                        }
+                    }
                 }
             }
 
-            .transition(background-color, 250ms, linear);
-
-            -o-animation: show-item-frame 1000ms 1 alternate;
-            -ms-animation: show-item-frame 1000ms 1 alternate;
-            -webkit-animation: show-item-frame 1000ms 1 alternate;
-            -moz-animation: show-item-frame 1000ms 1 alternate;
-            animation: show-item-frame 1000ms 1 alternate;
-
-            &:hover {
-                background-color: fade(@theme-color20, 80%);
+            img {
+                width: 12rem;
             }
         }
 
         &:empty {
             min-width: 99rem;
-            min-height: 50rem;
-        }
-    }
-
-    table {
-        display: block;
-        border-collapse: collapse;
-
-        width: 100%;
-        max-width: 99rem;
-
-        margin: 0;
-        margin-top: 6rem;
-        padding: 0;
-
-        tr {
-            display: block;
-        }
-        
-        thead {
-            display: block;
-            font-size: 1.7rem;
-
-            th {
-                padding: 0.5rem;
-                
-                &:first-child, &:last-child {
-                    visibility: hidden;
-                }
-            }
-        }
-
-        tbody {
-            display: block;
-
-            &:empty {
-                min-width: 99rem;
-                min-height: 50rem;
-            }
         }
     }
 }
@@ -392,8 +504,10 @@
     }
 
     .marketplace-result-container {
+        margin-top: 4.7rem;
         margin-left: 20rem;
-        text-align: center;
+
+        text-align: left;
     }
 
     &.marketplace {

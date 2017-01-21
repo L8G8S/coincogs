@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="styles/index.css" />
+
+    <link rel="import" id="loading-template" href="templates/loading.html">
+
+    <script src="scripts/utils/ajax.es6.js"></script>
+    <script src="scripts/utils/format.es6.js"></script>
+</head>
+
+<body>
+<header class="page-header">
+    <div class="wrapper">
+        <a class="logo" title="coincogs" href="http://localhost:4000"><img src="" alt /></a>
+        <div class="top-nav">
+            <div class="input-group search">
+                <input type="text" placeholder="Type your reference, year, metal..." /><button title="Click to search"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </div>
+            <a class="toggle-button" href="marketplace.html">
+                <input type="checkbox" id="marketplace"/>
+                <label for="marketplace"><span>Marketplace</span><i class="fa fa-caret-down" aria-hidden="true"></i></label>
+            </a>
+            <div  class="toggle-button">
+                <input type="checkbox" id="community"/>
+                <label for="community"><span>Community</span><i class="fa fa-caret-down" aria-hidden="true"></i></i></label>
+            </div>
+        </nav>
+    </div>
+</header>
+<div class="user-profile-header">
+    <div class="wrapper">
+        <div class="user-profile-info">
+            <img src="images/pika_avatar.png" alt class="avatar" />
+            <span class="name">@pika</span>
+        </div>
+
+        <div class="user-bio-info">
+            <cite>In coin we trust...</cite>
+        </div>
+
+        <div class="user-contact-info">
+            <span></span>
+            <a class="button"><i class="fa fa-envelope-o" aria-hidden="true"></i> Le contacter</a>
+        </div>
+    </div>
+</div>
+<div class="page-content user">
+    <div class="wrapper">
+        <div class="page-nav">
+            <span class="title">Evaluations du vendeur</span>
+        </div>
+        <div class="two-column three-quarter">
+            <div>
+                <div class="user-profile-reviews">
+    <table>
+        <thead>
+            <tr>
+                <th class="sort">Note</th>
+                <th class="sort">Date <i class="fa fa-caret-down" aria-hidden="true"></i></th>
+                <th class="sort">Type</th>
+                <th class="sort">Acheteur / Vendeur</th>
+                <th class="sort">Commentaire</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></td>
+                <td>01/01/2017</td>
+                <td>Vente</td>
+                <td>
+                    <div class="user-profile-info">
+                        <img src="images/michu_avatar.png" alt class="avatar" />
+                        <a class="name link">@michu</a>
+                        <div class="rating">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <div>150 notes</div>
+                        </div>
+                    </div>
+                </td>
+                <td>Soooo happyyyy!!!! ^^</td>
+            </tr>
+            <tr>
+                <td><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></td>
+                <td>01/02/2017</td>
+                <td>Vente</td>
+                <td>
+                    <div class="user-profile-info">
+                        <img src="images/mario_avatar.png" alt class="avatar" />
+                        <a class="name link">@mario</a>
+                        <div class="rating">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <div>26 notes</div>
+                        </div>
+                    </div>
+                </td>
+                <td>Very bad communication :/</td>
+            </tr>
+            <tr>
+                <td><i class="fa fa-hand-o-right" aria-hidden="true"></i></td>
+                <td>01/03/2017</td>
+                <td>Vente</td>
+                <td>
+                    <div class="user-profile-info">
+                        <img src="images/panda_avatar.png" alt class="avatar" />
+                        <a class="name link">@panda</a>
+                        <div class="rating">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                            <div>79 notes</div>
+                        </div>
+                    </div>
+                </td>
+                <td>Good</td>
+            </tr>
+            <tr>
+                <td><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></td>
+                <td>01/01/2017</td>
+                <td>Vente</td>
+                <td>
+                    <div class="user-profile-info">
+                        <img src="images/michu_avatar.png" alt class="avatar" />
+                        <a class="name link">@michu</a>
+                        <div class="rating">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <div>150 notes</div>
+                        </div>
+                    </div>
+                </td>
+                <td>Soooo happyyyy!!!! ^^</td>
+            </tr>
+            <tr>
+                <td><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></td>
+                <td>01/02/2017</td>
+                <td>Vente</td>
+                <td>
+                    <div class="user-profile-info">
+                        <img src="images/mario_avatar.png" alt class="avatar" />
+                        <a class="name link">@mario</a>
+                        <div class="rating">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <div>26 notes</div>
+                        </div>
+                    </div>
+                </td>
+                <td>Very bad communication :/</td>
+            </tr>
+            <tr>
+                <td><i class="fa fa-hand-o-right" aria-hidden="true"></i></td>
+                <td>01/03/2017</td>
+                <td>Vente</td>
+                <td>
+                    <div class="user-profile-info">
+                        <img src="images/panda_avatar.png" alt class="avatar" />
+                        <a class="name link">@panda</a>
+                        <div class="rating">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                            <div>79 notes</div>
+                        </div>
+                    </div>
+                </td>
+                <td>Good</td>
+            </tr>
+            <tr>
+                <td><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></td>
+                <td>01/01/2017</td>
+                <td>Vente</td>
+                <td>
+                    <div class="user-profile-info">
+                        <img src="images/michu_avatar.png" alt class="avatar" />
+                        <a class="name link">@michu</a>
+                        <div class="rating">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <div>150 notes</div>
+                        </div>
+                    </div>
+                </td>
+                <td>Soooo happyyyy!!!! ^^</td>
+            </tr>
+            <tr>
+                <td><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></td>
+                <td>01/02/2017</td>
+                <td>Vente</td>
+                <td>
+                    <div class="user-profile-info">
+                        <img src="images/mario_avatar.png" alt class="avatar" />
+                        <a class="name link">@mario</a>
+                        <div class="rating">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <div>26 notes</div>
+                        </div>
+                    </div>
+                </td>
+                <td>Very bad communication :/</td>
+            </tr>
+            <tr>
+                <td><i class="fa fa-hand-o-right" aria-hidden="true"></i></td>
+                <td>01/03/2017</td>
+                <td>Vente</td>
+                <td>
+                    <div class="user-profile-info">
+                        <img src="images/panda_avatar.png" alt class="avatar" />
+                        <a class="name link">@panda</a>
+                        <div class="rating">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                            <div>79 notes</div>
+                        </div>
+                    </div>
+                </td>
+                <td>Good</td>
+            </tr>
+            <tr>
+                <td><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></td>
+                <td>01/01/2017</td>
+                <td>Vente</td>
+                <td>
+                    <div class="user-profile-info">
+                        <img src="images/michu_avatar.png" alt class="avatar" />
+                        <a class="name link">@michu</a>
+                        <div class="rating">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <div>150 notes</div>
+                        </div>
+                    </div>
+                </td>
+                <td>Soooo happyyyy!!!! ^^</td>
+            </tr>
+            <tr>
+                <td><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></td>
+                <td>01/02/2017</td>
+                <td>Vente</td>
+                <td>
+                    <div class="user-profile-info">
+                        <img src="images/mario_avatar.png" alt class="avatar" />
+                        <a class="name link">@mario</a>
+                        <div class="rating">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <div>26 notes</div>
+                        </div>
+                    </div>
+                </td>
+                <td>Very bad communication :/</td>
+            </tr>
+            <tr>
+                <td><i class="fa fa-hand-o-right" aria-hidden="true"></i></td>
+                <td>01/03/2017</td>
+                <td>Vente</td>
+                <td>
+                    <div class="user-profile-info">
+                        <img src="images/panda_avatar.png" alt class="avatar" />
+                        <a class="name link">@panda</a>
+                        <div class="rating">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                            <div>79 notes</div>
+                        </div>
+                    </div>
+                </td>
+                <td>Good</td>
+            </tr>
+            <tr>
+                <td><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></td>
+                <td>01/01/2017</td>
+                <td>Vente</td>
+                <td>
+                    <div class="user-profile-info">
+                        <img src="images/michu_avatar.png" alt class="avatar" />
+                        <a class="name link">@michu</a>
+                        <div class="rating">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <div>150 notes</div>
+                        </div>
+                    </div>
+                </td>
+                <td>Soooo happyyyy!!!! ^^</td>
+            </tr>
+            <tr>
+                <td><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></td>
+                <td>01/02/2017</td>
+                <td>Vente</td>
+                <td>
+                    <div class="user-profile-info">
+                        <img src="images/mario_avatar.png" alt class="avatar" />
+                        <a class="name link">@mario</a>
+                        <div class="rating">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <div>26 notes</div>
+                        </div>
+                    </div>
+                </td>
+                <td>Very bad communication :/</td>
+            </tr>
+            <tr>
+                <td><i class="fa fa-hand-o-right" aria-hidden="true"></i></td>
+                <td>01/03/2017</td>
+                <td>Vente</td>
+                <td>
+                    <div class="user-profile-info">
+                        <img src="images/panda_avatar.png" alt class="avatar" />
+                        <a class="name link">@panda</a>
+                        <div class="rating">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                            <div>79 notes</div>
+                        </div>
+                    </div>
+                </td>
+                <td>Good</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+            </div>
+            <div>
+                <div class="user-profile-metadata">
+    <figure>
+        <figcaption class="title">Information</figcaption>
+        <div class="table two-cols">
+            <span class="cell">Membre depuis :</span><span class="cell">01/01/2017</span>
+            <span class="cell">Localisation :</span><span class="cell">Limoges</span>
+            <span class="cell">Profil :</span><span class="cell">Professionnel</span>
+        </div>
+    </figure>
+
+    <figure>
+        <figcaption class="title">Evaluations</figcaption>
+        <div class="table two-cols">
+            <span class="cell"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Positif :</span><span class="cell">45</span>
+            <span class="cell"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> Négatif :</span><span class="cell">1</span>
+            <span class="cell"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Neutre :</span><span class="cell">3</span>
+        </div>
+    </figure>
+
+    <figure>
+        <figcaption class="title">Contributions</figcaption>
+        <div>Aucune contribution<br/>(jusqu'à présent)</div>
+    </figure>
+</div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<footer class="page-footer"></footer>
+<script type="text/javascript">
+    function updatePageNavLayout() {
+        var content = document.querySelector('.page-content');
+        var wrapper = content.querySelector('.wrapper');
+        var pagenav = content.querySelector('.page-nav');
+        
+        if(pagenav && content) pagenav.style.width = (wrapper.offsetWidth - (content.offsetWidth - content.clientWidth)) + 'px';
+    }
+
+    updatePageNavLayout();
+
+    window.addEventListener('resize', updatePageNavLayout);
+</script>
+</body>
+</html>

@@ -11,25 +11,16 @@
             @@include('./partials/marketplace_tab_bar.html')
             @@include('./partials/marketplace_nav_bar.html')
         </div>
-        @@include('./partials/marketplace_filters.html')
-        @@include('./partials/marketplace_results.html')
+        <div class="two-column one-fifth">
+            <div>
+                @@include('./partials/marketplace_filters.html')
+            </div>
+            <div>
+                @@include('./partials/marketplace_results.html')
+            </div>
+        </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    function syncNavAndList() {
-        var container = document.querySelector('.marketplace-result-container');
-        var containerStyle = container.currentStyle || window.getComputedStyle(container);
-        
-        var nav = document.querySelector('.page-nav');
-
-        nav.style.width = (container.offsetWidth + parseFloat(containerStyle.marginLeft) + parseFloat(containerStyle.marginRight)) + 'px';
-    }
-
-    window.addEventListener('resize', syncNavAndList);
-
-    syncNavAndList();
-</script>
 
 @@include('./partials/page_footer.html')
 @@include('./partials/page_include_body.html')

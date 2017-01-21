@@ -3,20 +3,6 @@
 </div>
 
 <script type="text/javascript">
-
-    function syncNavAndList() {
-        var container = document.querySelector('.search-result-container');
-        var containerStyle = container.currentStyle || window.getComputedStyle(container);
-        
-        var nav = document.querySelector('.page-nav');
-
-        nav.style.width = (container.offsetWidth + parseFloat(containerStyle.marginLeft) + parseFloat(containerStyle.marginRight)) + 'px';
-    }
-
-    window.addEventListener('resize', syncNavAndList);
-
-    syncNavAndList();
-
     var rc= {
         previousResultPage: function() {
             this.pageIndex--;

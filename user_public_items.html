@@ -77,20 +77,6 @@
 </div>
 
 <script type="text/javascript">
-
-    function syncNavAndList() {
-        var container = document.querySelector('.search-result-container');
-        var containerStyle = container.currentStyle || window.getComputedStyle(container);
-        
-        var nav = document.querySelector('.page-nav');
-
-        nav.style.width = (container.offsetWidth + parseFloat(containerStyle.marginLeft) + parseFloat(containerStyle.marginRight)) + 'px';
-    }
-
-    window.addEventListener('resize', syncNavAndList);
-
-    syncNavAndList();
-
     var rc= {
         previousResultPage: function() {
             this.pageIndex--;
@@ -244,16 +230,17 @@
 
 <footer class="page-footer"></footer>
 <script type="text/javascript">
-    function syncWrappersLayout() {
-        var header = document.querySelector('.page-header .wrapper');
-        var content = document.querySelector('.page-content .wrapper');
-
-        if(content && header) header.style.width = content.offsetWidth + 'px';
+    function updatePageNavLayout() {
+        var content = document.querySelector('.page-content');
+        var wrapper = content.querySelector('.wrapper');
+        var pagenav = content.querySelector('.page-nav');
+        
+        if(pagenav && content) pagenav.style.width = (wrapper.offsetWidth - (content.offsetWidth - content.clientWidth)) + 'px';
     }
 
-    window.addEventListener('resize', syncWrappersLayout);
+    updatePageNavLayout();
 
-    syncWrappersLayout();
+    window.addEventListener('resize', updatePageNavLayout);
 </script>
 </body>
 </html>

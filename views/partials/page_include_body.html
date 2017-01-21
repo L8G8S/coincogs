@@ -1,12 +1,13 @@
 <script type="text/javascript">
-    function syncWrappersLayout() {
-        var header = document.querySelector('.page-header .wrapper');
-        var content = document.querySelector('.page-content .wrapper');
-
-        if(content && header) header.style.width = content.offsetWidth + 'px';
+    function updatePageNavLayout() {
+        var content = document.querySelector('.page-content');
+        var wrapper = content.querySelector('.wrapper');
+        var pagenav = content.querySelector('.page-nav');
+        
+        if(pagenav && content) pagenav.style.width = (wrapper.offsetWidth - (content.offsetWidth - content.clientWidth)) + 'px';
     }
 
-    window.addEventListener('resize', syncWrappersLayout);
+    updatePageNavLayout();
 
-    syncWrappersLayout();
+    window.addEventListener('resize', updatePageNavLayout);
 </script>

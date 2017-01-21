@@ -4,20 +4,21 @@
 
 <body>
 @@include('./partials/page_header.html')
-
-<div class="page-content index">
+@@include('./partials/user_profile_header.html')
+<div class="page-content user">
     <div class="wrapper">
         <div class="page-nav">
-            @@include('./partials/nav_bar.html')
+            <span class="title">Evaluations du vendeur</span>
         </div>
-        <div class="two-column one-fifth">
+        <div class="two-column three-quarter">
             <div>
-                @@include('./partials/search_filters.html')
+                @@include('./partials/user_profile_reviews.html')
             </div>
             <div>
-                @@include('./partials/search_results.html')
+                @@include('./partials/user_profile_metadata.html')
             </div>
         </div>
+        
     </div>
 </div>
 

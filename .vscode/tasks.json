@@ -1,13 +1,14 @@
 {
-    "version": "0.1.0",
-    "command": "gulp",
-    "isShellCommand": true,
+    "version": "2.0.0",
     "tasks": [
         {
-            "taskName": "default",
-            "isBuildCommand": true,
-            "showOutput": "always",
-            "isWatching": true
+            "label": "Local Dev",
+            "type": "shell",
+            "command": "gulp serve",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
         }
     ]
 }

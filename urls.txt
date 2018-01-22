@@ -1,3 +1,12 @@
+https://docs.microsoft.com/fr-fr/azure/storage/storage-dotnet-how-to-use-blobs
+https://azure.microsoft.com/en-us/resources/samples/storage-blobs-dotnet-webapp/
+http://www.wintellect.com/devcenter/rrobinson/azure-bits-2-saving-the-image-to-azure-blob-storage
+https://docs.microsoft.com/en-us/rest/api/storageservices/deciding-when-to-use-azure-blobs--azure-files--or-azure-data-disks
+https://www.simple-talk.com/cloud/platform-as-a-service/8-essential-best-practices-in-windows-azure-blob-storage/
+http://www.thereformedprogrammer.net/architecture-of-business-layer-working-with-entity-framework-core-and-v6-revisited/
+
+https://blogs.msdn.microsoft.com/webdev/2014/02/18/adding-two-factor-authentication-to-an-application-using-asp-net-identity/
+
 https://developer.mozilla.org/fr/Apps/Build/Hors-ligne
 https://github.com/localForage/localForage
 http://blog.ippon.fr/2013/05/23/une-application-html5-desktop-en-mode-offline/

@@ -2,17 +2,17 @@
   "name": "flow-chain",
   "version": "0.0.1",
   "devDependencies": {
-    "browser-sync": "*",
+    "browser-sync": "^2.23.5",
     "gulp": "^3.9.1",
-    "gulp-clean-css": "^2.0.7",
+    "gulp-clean-css": "^2.4.0",
     "gulp-connect": "^4.1.0",
-    "gulp-file-include": "^1.0.0",
-    "gulp-inject": "^4.2.0",
-    "gulp-less": "^3.1.0",
+    "gulp-file-include": "^1.2.0",
+    "gulp-inject": "^4.3.0",
+    "gulp-less": "^3.4.0",
     "gulp-rename": "^1.2.2",
     "gulp-sequence": "^0.4.5",
-    "gulp-sourcemaps": "^1.6.0",
+    "gulp-sourcemaps": "^1.12.0",
     "gulp-util": "^3.0.7",
-    "require-dir": "^0.3.1"
+    "require-dir": "^0.3.2"
   }
 }
